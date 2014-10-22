@@ -1,0 +1,93 @@
+a:hover{
+    cursor: pointer;
+}
+
+textarea{
+    resize: vertical;
+}
+
+header.headerPrincipal{
+    background-color: #1C1D22;
+    background-image: url(../images/logo_fundo.png);
+    background-repeat: repeat-x;
+    color:white;
+    z-index: 99;
+    height: 50px;
+    width:100%;
+    position: fixed;
+    top: 0px;
+}
+
+.div_location{
+    text-align: center;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+
+#loadingDiv {
+  position: absolute;
+  top: 0;
+  bottom: 0%;
+  left: 0;
+  right: 0%;
+  background-color: white;
+  z-index: 100;
+  display: block;
+  text-align: center;
+  width: 100%;
+  padding-top: 25px;
+}
+
+#loading{
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -150px;
+    margin-top: -150px;
+    font-family: Calibri,Verdana,Arial,sans-serif;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.topo{
+    text-align: center;
+    position:fixed;
+    width:100%;
+    left: 0px;
+    background-color:rgba(0,0,0,0.5);
+    z-index: 99;
+}
+
+table.cadastro{
+    width: 100%;
+}
+
+table.cadastro tr{
+
+}
+
+table.cadastro tr td{
+    border-left: solid 10px rgba(0, 0, 0, 0);
+    border-top: solid 10px rgba(0,0,0,0);
+}
+
+table.cadastro tr td input[type=text],table.cadastro tr td input[type=tel],table.cadastro tr td input[type=email],
+table.cadastro tr td input[type=date],table.cadastro tr td select,table.cadastro tr td textarea{
+    width: 100%;
+    
+}
+
+/*
+.Demo960{
+    background-image: url('960gs/16_col.gif');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: repeat-y;
+}
+
+.DemoGrid{
+    border: 1px solid black;
+}*/

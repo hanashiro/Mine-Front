@@ -1,0 +1,157 @@
+<div class="DemoGrid topo">
+    <div class="grid-50 push-20" >
+        <input type="search" autofocus placeholder="Pesquisar" ng-keydown="travarCampo($event)" ng-keyup="mascararBusca($event)" class="form-control" ng-model="buscaNome" /> 
+    </div>
+    <div class="grid-10 push-20" >
+        <button type="button" ng-click="buscar()" class="btn btn-default">
+            <i class="glyphicon glyphicon-search" ></i> Buscar
+        </button>
+    </div>
+</div>
+
+<div class="clear" style="height: 60px;" ></div>
+
+
+
+
+
+<section class="grid-60 grid-parent  DemoGrid" id='fornecedorLista' ng-show="Fornecedor.fornecedores.length > 0" >
+    <div class="contato" ng-repeat="fornecedor in Fornecedor.fornecedores" ng-click='selecionarFornecedor(fornecedor)'>
+        <span class='fornecedorNome' >{{fornecedor.NomeFantasia}}</span>
+        <div>
+            {{fornecedor.Endereco.TipoLogradouro.Value}} {{fornecedor.Endereco.Logradouro}}, {{fornecedor.Endereco.Numero}},
+            {{fornecedor.Endereco.bairro}} 
+            <br>{{fornecedor.Endereco.Cidade.Value}} - {{fornecedor.Endereco.Estado.Value}}
+        </div>
+    </div>
+</section>
+
+
+
+
+<div id='fornecedorDetalhes' class="grid-40 grid-parent DemoGrid" ng-show='Fornecedor.fornecedores.length>0 && Fornecedor.fornecedor.ID' >
+        
+    <div>
+        <div style="float:right;display:none;" title="Deletar" ng-click="deletar(Fornecedor.fornecedor)">
+            <button class="btn btn-danger" >
+                <i class="glyphicon glyphicon-remove" ></i>
+            </button>
+        </div>
+        <div style="float:right" title="Editar" ng-click="editarFornecedor(Fornecedor.fornecedor)">
+            <button class="btn btn-info" >
+                <i class="glyphicon glyphicon-pencil" ></i>
+            </button>
+        </div>
+    </div>
+         
+    <span class='fornecedorNome' >{{Fornecedor.fornecedor.NomeFantasia}}</span>
+    <div id='fornecedorTelefone' ng-show="(Fornecedor.fornecedor.Contato | filter : Fornecedor.fornecedor.Contato.Categoria='Telefone').length>0">
+        <span class="tituloSessao">Telefone</span>
+        <div class="conteudoSessao" >
+            <table class="conteudoSessao">
+                <tr  ng-repeat="telefone in Fornecedor.fornecedor.Contato" ng-show='telefone.Categoria=="Telefone"'>
+                    <td><b>{{telefone.Tipo}}:</b></td>
+                    <td>{{telefone.Contato}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id='fornecedorEmail' ng-show="(Fornecedor.fornecedor.Contato | filter : Fornecedor.fornecedor.Contato.Categoria='Email').length>0">
+        <span class="tituloSessao" >E-mail</span>
+        <div class="conteudoSessao" >
+            <table>
+                <tr ng-repeat="email in Fornecedor.fornecedor.Contato" ng-show='email.Categoria=="Email"'>
+                    <td> <b>{{email.Tipo}}:</b></td>
+                    <td>{{email.Contato}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="fornecedorEndereco" >    
+        <div class="tituloSessao" >Endere&ccedil;o</div>
+        <div class="conteudoSessao">
+            {{Fornecedor.fornecedor.Endereco.TipoLogradouro.Value}} {{Fornecedor.fornecedor.Endereco.Logradouro}}, {{Fornecedor.fornecedor.Endereco.Numero}},
+            {{Fornecedor.fornecedor.Endereco.Bairro}}, 
+            <br>{{Fornecedor.fornecedor.Endereco.Cidade.Value}} - {{Fornecedor.fornecedor.Endereco.Estado.Value}}
+        </div>
+    </div>
+    
+    <div id='fornecedorContainerMapa' ng-show='Fornecedor.fornecedor.Endereco.Coordenadas!=""' onclick="Core.Controles.Fornecedor.Lista.abrirMapa()" >
+        <div id='fornecedorMapa' ></div>
+    </div>
+</div>
+
+
+<div style='clear:both;' ></div>
+
+
+
+<style>
+    .contato{
+        background-color: #FFFFFF;
+        border: solid 1px #D2D3D6;
+        border-radius: 5px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-right: 1%;
+        margin-left: 1%;
+        width: 30%;
+        float: left;
+    }
+    .contato:hover{
+        cursor:pointer;
+        opacity: 0.75;
+    }
+    .fornecedorFoto{
+        display: block;
+        margin: auto;
+        width: 45%;
+    }
+    .fornecedorNome{
+        display: block;
+        text-align: center;
+        font-family: Calibri,Verdana,Arial,sans-serif;
+        font-size: 1.3em;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    .tituloSessao{
+        background : #4E87DB;
+        background-image: url(images/logo_fundo.png);
+        width : 100%;
+        color : #FFF;
+        font-family: Calibri,Verdana,Arial,sans-serif;
+        font-size: 1.1em;
+        font-weight: bold;
+        display:block;
+        margin-bottom: 5px;
+        text-indent: 2%;
+    }
+    .conteudoSessao{
+        padding-left: 5%;
+    }
+    #fornecedorBusca{
+        width: 40%;
+        position: relative;
+        top: 15px;
+        height: 30px;
+        font-size: 1.3em;
+    }
+    #fornecedorLista{
+        float: left;
+        max-height: 750px;
+        background: #e9eaed;
+        border: solid 1px #D2D3D6;
+        overflow-y: auto;
+    }
+    #fornecedorDetalhes{
+        /*float:left;*/
+        /*max-height: 600px;
+        overflow-y: auto;*/
+    }
+    #fornecedorMapa{
+        width:90%;
+        height:400px;
+        margin:auto;
+    }
+</style>

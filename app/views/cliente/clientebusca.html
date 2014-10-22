@@ -1,0 +1,166 @@
+<div class="DemoGrid topo">
+    <div class="grid-50 push-20" >
+        <input type="search" autofocus placeholder="Pesquisar" ng-keydown="travarCampo($event)" ng-keyup="mascararBusca($event)" class="form-control" ng-model="busca"/> 
+    </div>
+    <div class="grid-10 push-20" >
+        <button type="button" ng-click="buscar()" class="btn btn-default">
+            <i class="glyphicon glyphicon-search" ></i> Buscar
+        </button>
+    </div>
+</div>
+
+<div class="clear" style="height: 60px;" ></div>
+
+
+
+
+
+<section class="grid-60 grid-parent  DemoGrid" id='clienteLista' ng-show="Cliente.clientes.length > 0" >
+    <div class="contato" ng-repeat="cliente in Cliente.clientes" ng-click='selecionarCliente(cliente)'>
+        <img class="clienteFoto" ng-src="{{cliente.Foto=='' ? 'images/user'+cliente.Sexo+'.png' : cliente.Foto}}" />
+        <span class='clienteNome' >{{cliente.Nome}}</span>
+        <div>
+            {{cliente.Endereco.TipoLogradouro.Value}} {{cliente.Endereco.Logradouro}}, {{cliente.Endereco.Numero}},
+            {{cliente.Endereco.bairro}} 
+            <br>{{cliente.Endereco.Cidade.Value}} - {{cliente.Endereco.Estado.Value}}
+        </div>
+    </div>
+</section>
+
+
+
+
+<div id='clienteDetalhes' class="grid-40 grid-parent DemoGrid" ng-show='Cliente.clientes.length>0 && Cliente.cliente.ID' >
+        
+    <div>
+        <!--div style="float:right" title="Deletar" ng-click="deletar(Cliente.cliente)">
+            <button class="btn btn-danger" >
+                <i class="glyphicon glyphicon-remove" ></i>
+            </button>
+        </div-->
+        <div style="float:right" title="Editar" ng-click="editarCliente(Cliente.cliente)">
+            <button class="btn btn-info" >
+                <i class="glyphicon glyphicon-pencil" ></i>
+            </button>
+        </div>
+    </div>
+         
+    <img class="clienteFoto" style="margin-left: 32%;" ng-src="{{'images/user'+Cliente.cliente.Sexo+'.png'}}" />
+    <span class='clienteNome' >{{Cliente.cliente.Nome}}</span>
+    <div ng-show="Cliente.cliente.Anotacao.length>0" >
+        <div class="tituloSessao" >Anota&ccedil;&otilde;es</div>
+        <div class="conteudoSessao" style="white-space: pre-line;margin-top: -15px;">
+            {{Cliente.cliente.Anotacao}}
+        </div>
+    </div>
+    <div id='clienteTelefone' ng-show="(Cliente.cliente.Contato | filter : Cliente.cliente.Contato.Categoria='Telefone').length>0">
+        <span class="tituloSessao">Telefone</span>
+        <div class="conteudoSessao" >
+            <table class="conteudoSessao">
+                <tr  ng-repeat="telefone in Cliente.cliente.Contato" ng-show='telefone.Categoria=="Telefone"'>
+                    <td><b>{{telefone.Tipo}}:</b></td>
+                    <td>{{telefone.Contato}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id='clienteEmail' ng-show="(Cliente.cliente.Contato | filter : Cliente.cliente.Contato.Categoria='Email').length>0">
+        <span class="tituloSessao" >E-mail</span>
+        <div class="conteudoSessao" >
+            <table>
+                <tr ng-repeat="email in Cliente.cliente.Contato" ng-show='email.Categoria=="Email"'>
+                    <td> <b>{{email.Tipo}}:</b></td>
+                    <td>{{email.Contato}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="clienteEndereco" >    
+        <div class="tituloSessao" >Endere&ccedil;o</div>
+        <div class="conteudoSessao">
+            {{Cliente.cliente.Endereco.TipoLogradouro.Value}} {{Cliente.cliente.Endereco.Logradouro}}, {{Cliente.cliente.Endereco.Numero}},
+            {{Cliente.cliente.Endereco.Bairro}}, 
+            <br>{{Cliente.cliente.Endereco.Cidade.Value}} - {{Cliente.cliente.Endereco.Estado.Value}}
+        </div>
+    </div>
+    <div ng-show='Cliente.cliente.Endereco.Coordenadas!=""' style="text-align:right;padding-right:5%;">
+        <button class="btn btn-info" ng-click="abrirMapa()"><i class="fa fa-arrows-alt"></i></button>
+    </div>
+    <div id='clienteContainerMapa' ng-show='Cliente.cliente.Endereco.Coordenadas!=""'>
+        <div id='clienteMapa' ></div>
+    </div>
+</div>
+
+
+<div style='clear:both;' ></div>
+
+
+
+<style>
+    .contato{
+        background-color: #FFFFFF;
+        border: solid 1px #D2D3D6;
+        border-radius: 5px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-right: 1%;
+        margin-left: 1%;
+        width: 30%;
+        float: left;
+    }
+    .contato:hover{
+        cursor:pointer;
+        opacity: 0.75;
+    }
+    .clienteFoto{
+        display: block;
+        margin: auto;
+        width: 45%;
+    }
+    .clienteNome{
+        display: block;
+        text-align: center;
+        font-family: Calibri,Verdana,Arial,sans-serif;
+        font-size: 1.1em;
+        font-weight: bold;
+    }
+    .tituloSessao{
+        background : #4E87DB;
+        background-image: url(images/logo_fundo.png);
+        width : 100%;
+        color : #FFF;
+        font-family: Calibri,Verdana,Arial,sans-serif;
+        font-size: 1.1em;
+        font-weight: bold;
+        display:block;
+        margin-bottom: 5px;
+        text-indent: 2%;
+    }
+    .conteudoSessao{
+        padding-left: 5%;
+    }
+    #clienteBusca{
+        width: 40%;
+        position: relative;
+        top: 15px;
+        height: 30px;
+        font-size: 1.3em;
+    }
+    #clienteLista{
+        float: left;
+        max-height: 750px;
+        background: #e9eaed;
+        border: solid 1px #D2D3D6;
+        overflow-y: auto;
+    }
+    #clienteDetalhes{
+        /*float:left;*/
+        /*max-height: 600px;
+        overflow-y: auto;*/
+    }
+    #clienteMapa{
+        width:90%;
+        height:400px;
+        margin:auto;
+    }
+</style>

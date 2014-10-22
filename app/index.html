@@ -1,0 +1,202 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css({.tmp,app}) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/960gs/960.css">
+    <link rel="stylesheet" href="styles/960gs/unsemantic-grid-responsive.css">
+    <link rel="stylesheet" href="styles/font-awesome/css/font-awesome.css">
+
+    <link rel="stylesheet" href="scripts/vendors/toastmessage/jquery-toastmessage.css">
+    <link rel="stylesheet" href="scripts/vendors/dock/macdock.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="mineApp">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    
+    <!--  CABECALHO  -->
+    <header class="headerPrincipal" ng-controller="HeaderCtrl" >
+        <div class="grid-container" style="height:100%;" >
+            <div class="grid-10" style="font-size:35px;font-weight: bolder;cursor:pointer" onclick="location.href='#'" >mine</div>
+            
+            <div class="grid-80 div_location"></div>
+            
+            <div class="grid-10" style="text-align: right;margin-top: 15px;cursor:pointer;" ng-show="Login.isLogged"
+                 onclick="Controle.Login.logout();" >
+                <i class="glyphicon glyphicon-off" ></i> Logout
+                <img ng-src="{{FctLogin.user.image.url}}" />
+            </div>
+        </div>
+    </header>
+    
+    <!--  CORPO DO CONTEUDO  -->    
+    <div ng-view="" class="grid-container DemoGrid Demo960" 
+      style="height: 100%;margin-bottom: 200px;margin-top:50px;" ></div>
+
+
+    <!--  RODAPE -->
+    <footer class="grid-container" style="position:fixed;bottom:0px;" >
+        <nav id="dock" >
+            <ul class="black" >
+                <li style="cursor:pointer;">
+                    <a href="#cliente/clienteBusca" >
+                        <span>Clientes</span><img src="scripts/vendors/dock/dock/icons/contacts.png"/>
+                    </a>
+                </li>
+                <li style="cursor:pointer;">
+                    <a href="#cliente/clienteCadastro/novo_cliente" >
+                        <span>Cadastro de Clientes</span><img src="scripts/vendors/dock/dock/icons/contact_new.png"/>
+                    </a>
+                </li>
+                <!--li class="seperator"></!--li>
+                <li style="cursor:pointer;">
+                    <a>
+                        <span>Produtos</span><img src="scripts/vendors/dock/dock/icons/products2.png"/>
+                    </a>
+                </li>
+                <li class="seperator"></li>
+                <li style="cursor:pointer;">
+                    <a href="#vendaNova" >
+                        <span>Nova Venda</span><img src="scripts/vendors/dock/dock/icons/empty-cart.png"/>
+                    </a>
+                </li>
+                <li style="cursor:pointer;">
+                    <a href="#vendaLista" >
+                        <span>Vendas</span><img src="scripts/vendors/dock/dock/icons/full-cart.png"/>
+                    </a>
+                </li-->
+                <li class="seperator"></li>
+                <li style="cursor:pointer;">
+                    <a href="#fornecedor/fornecedorBusca" >
+                        <span>Fornecedores</span><img src="scripts/vendors/dock/dock/icons/agenda_truck.png"/>
+                    </a>
+                </li>
+                <li style="cursor:pointer;">
+                    <a href="#fornecedor/fornecedorCadastro/novo_fornecedor" >
+                        <span>Cadastro de  Fornecedores</span><img src="scripts/vendors/dock/dock/icons/add-providers.png"/>
+                    </a>
+                </li>
+                <li class="seperator"></li>
+                <li style="cursor:pointer;">
+                    <a href="#contador" >
+                        <span>Contador</span><img src="scripts/vendors/dock/dock/icons/calculator.png"/>
+                    </a>
+                </li>
+                <!--li style="cursor:pointer;">
+                    <a>
+                        <span>Relat&oacute;rios</span><img src="scripts/vendors/dock/dock/icons/chart.png"/>
+                    </a>
+                </!--li>
+                <li class="seperator"></li>
+                <li style="cursor:pointer;">
+                    <a>
+                        <span>Controle de Caixa</span><img src="scripts/vendors/dock/dock/icons/cash_register.png"/>
+                    </a>
+                </li-->
+                <!--li class="seperator"></li>
+                <li style="cursor:pointer;">
+                        <a>
+                        <span>dfgdf</span><img ng-src="scripts/vendors/dock/dock/icon_blank.png"/>
+                    </a>
+                </li-->
+            </ul>
+        </nav>
+    </footer>
+                    
+    <div id="loadingDiv" >
+        <div id="loading">
+            <img src="images/loader_infinity.gif" /><br />
+            <span>Carregando...</span>
+        </div>
+    </div>
+
+     
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script>
+
+    <!-- build:js(.) scripts/oldieshim.js -->
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.js"></script>
+    <![endif]-->
+    <!-- endbuild -->
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/colecoes.js"></script>
+        <script src="scripts/controle.js"></script>
+        <script src="scripts/objetos.js"></script>
+        <script src="scripts/plugins.js"></script>
+        <script src="scripts/utils.js"></script>
+
+        <script src="scripts/vendors/angular/angular-ui-bootstrap.js"></script> 
+        <script src="scripts/vendors/toastmessage/jquery-toastmessage.js"></script>        
+        <script src="scripts/vendors/dock/macdock.js"></script> 
+
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/contador.js"></script>
+        <script src="scripts/controllers/cliente/clientebusca.js"></script>
+        <script src="scripts/controllers/cliente/clientecadastro.js"></script>
+        <script src="scripts/controllers/fornecedor/fornecedorbusca.js"></script>
+        <script src="scripts/controllers/fornecedor/fornecedorcadastro.js"></script>
+        <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/header.js"></script>
+        <script src="scripts/services/fctapi.js"></script>
+        <script src="scripts/services/fctcliente.js"></script>
+        <script src="scripts/services/fctfornecedor.js"></script>
+        <script src="scripts/services/fctlogin.js"></script>
+        <script src="scripts/services/fctobjreader.js"></script>
+        <!-- endbuild -->
+
+        <script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=false"></script>
+</body>
+</html>
+
+
+
+<script>
+
+    $(document).ready(function(){
+       $('#loadingDiv').fadeOut(300);
+    });
+
+</script>

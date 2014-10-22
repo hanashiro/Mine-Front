@@ -1,0 +1,129 @@
+<div class="topo">
+    <span style="display:none;" >{{totalDinheiro()}}</span>
+    <div style="width:350px;margin:auto;" >
+        <div class="input-group">
+            <span class="input-group-btn">
+                <button class="btn btn-primary" type="button">
+                    Total
+                </button>
+            </span>
+            <input type="text" style="width: 200px;cursor:default" readonly="readonly" class="form-control" ng-model="total" >
+            <span class="input-group-btn">
+                <button class="btn btn-primary" ng-click="iniciar();" type="button">
+                    <i class="fa fa-undo"></i> Reiniciar
+                </button>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="clear" style="height: 70px;" ></div>
+
+
+
+
+
+
+<div class="grid-70 push-15  linhaContador"  >
+    <div class="grid-25 " >
+        <img src="images/dinheiro/nota100.png" />
+    </div>
+    <div class="grid-25 " >
+        <input id="nota100" class="grid-100" type="text" maxlength="10" onkeydown="Utils.Mascaras.numerosTeclado()" tabindex="1" ng-model="dinheiro.nota100" />
+    </div>
+    <div class="grid-25 " >
+        <img src="images/dinheiro/moeda1.png" />
+    </div>
+    <div class="grid-25 " >
+        <input class="grid-100" type="text" maxlength="10" onkeydown="Utils.Mascaras.numerosTeclado()" tabindex="7" ng-model="dinheiro.moeda1" />
+    </div>
+</div>
+<div class="grid-70 push-15  linhaContador"  >
+    <div class="grid-25 " >
+        <img src="images/dinheiro/nota50.png" />
+    </div>
+    <div class="grid-25 " >
+        <input class="grid-100" type="text" maxlength="10" onkeydown="Utils.Mascaras.numerosTeclado()" tabindex="2" ng-model="dinheiro.nota50" />
+    </div>
+    <div class="grid-25 " >
+        <img src="images/dinheiro/moeda050.png" />
+    </div>
+    <div class="grid-25 " >
+        <input class="grid-100" type="text" maxlength="10" onkeydown="Utils.Mascaras.numerosTeclado()" tabindex="8" ng-model="dinheiro.moeda050" />
+    </div>
+</div>
+<div class="grid-70 push-15  linhaContador"  >
+    <div class="grid-25 " >
+        <img src="images/dinheiro/nota20.png" />
+    </div>
+    <div class="grid-25 " >
+        <input class="grid-100" type="text" maxlength="10" onkeydown="Utils.Mascaras.numerosTeclado()" tabindex="3" ng-model="dinheiro.nota20" />
+    </div>
+    <div class="grid-25 " >
+        <img src="images/dinheiro/moeda025.png" />
+    </div>
+    <div class="grid-25 " >
+        <input class="grid-100" type="text" maxlength="10" onkeydown="Utils.Mascaras.numerosTeclado()" tabindex="9" ng-model="dinheiro.moeda025" />
+    </div>
+</div>
+<div class="grid-70 push-15  linhaContador"  >
+    <div class="grid-25 " >
+        <img src="images/dinheiro/nota10.png" />
+    </div>
+    <div class="grid-25 " >
+        <input class="grid-100" type="text" maxlength="10" onkeydown="Utils.Mascaras.numerosTeclado()" tabindex="4" ng-model="dinheiro.nota10" />
+    </div>
+    <div class="grid-25 " >
+        <img src="images/dinheiro/moeda010.png" />
+    </div>
+    <div class="grid-25 " >
+        <input class="grid-100" type="text" maxlength="10" onkeydown="Utils.Mascaras.numerosTeclado()" tabindex="10" ng-model="dinheiro.moeda010" />
+    </div>
+</div>
+<div class="grid-70 push-15  linhaContador"  >
+    <div class="grid-25 " >
+        <img src="images/dinheiro/nota5.png" />
+    </div>
+    <div class="grid-25 " >
+        <input class="grid-100" type="text" maxlength="10" onkeydown="Utils.Mascaras.numerosTeclado()" tabindex="5" ng-model="dinheiro.nota5" />
+    </div>
+    <div class="grid-25 " >
+        <img src="images/dinheiro/moeda005.png" />
+    </div>
+    <div class="grid-25 " >
+        <input class="grid-100" type="text" maxlength="10" onkeydown="Utils.Mascaras.numerosTeclado()" tabindex="11" ng-model="dinheiro.moeda005" />
+    </div>
+</div>
+<div class="grid-70 push-15  linhaContador"  >
+    <div class="grid-25 " >
+        <img src="images/dinheiro/nota2.png" />
+    </div>
+    <div class="grid-25 " >
+        <input class="grid-100" type="text" maxlength="10" onkeydown="Utils.Mascaras.numerosTeclado()" tabindex="6" ng-model="dinheiro.nota2" />
+    </div>
+    <div class="grid-25 " >
+    </div>
+    <div class="grid-25 " >
+    </div>
+</div>
+
+
+
+
+
+<style>
+    .linhaContador{
+        height: 85px;
+        text-align: center;
+    }
+    
+    .linhaContador div{
+        height: 100%;
+        vertical-align: middle;
+    }
+    
+    .linhaContador div input[type="text"]{
+        position: relative;
+        top: 20px;
+    }
+</style>
