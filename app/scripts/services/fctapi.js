@@ -9,7 +9,7 @@
  */var TesteAPI;
 angular.module('mineApp')
   .factory('FctApi', function ($http) {
-    var url = 'http://localhost:55357/api/';
+    var url = 'http://localhost:8080/Mine/';
     var api = (function(){
         return{
             get : function(endp,sucesso,erro){

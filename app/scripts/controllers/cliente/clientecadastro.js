@@ -20,8 +20,8 @@ angular.module('mineApp')
     FctObjReader.Objects.totalRead = [];
     FctObjReader.Objects.ignoreRead = [];
     FctObjReader.Objects.includeRead = [
-        [$scope.Cliente.cliente, ['Nome', 'Sexo']],
-        [$scope.Cliente.cliente.Endereco, ['TipoLogradouro','Logradouro', 'Numero', 'Bairro', 'Estado', 'Cidade']]
+        [$scope.Cliente.cliente, ['nome', 'sexo']],
+        [$scope.Cliente.cliente.Endereco, ['tipoLogradouro','logradouro', 'numero', 'bairro', 'estado', 'cidade']]
     ];
 
         
@@ -29,13 +29,13 @@ angular.module('mineApp')
     $scope.tipoEmail = Colecao.tiposEmail;
     $scope.tipoTelefone = Colecao.tiposTelefone;
     $scope.tipoLogradouro = Colecao.tiposLogradouro;
-    $scope.cidades = Utils.Moradia.retornarCidade($scope.Cliente.cliente.Endereco.Estado.Key);
+    $scope.cidades = Utils.Moradia.retornarCidade($scope.Cliente.cliente.endereco.estado.Key);
     $scope.telefone = Objetos.Contato();
     $scope.email = Objetos.Contato();
 
     /******* FUNCOES *******/
     $scope.retornarCidades = function(){
-        $scope.cidades = Utils.Moradia.retornarCidade($scope.Cliente.cliente.Endereco.Estado.Key);
+        $scope.cidades = Utils.Moradia.retornarCidade($scope.Cliente.cliente.endereco.estado.Key);
         $scope.Cliente.cliente.Endereco.Cidade = {};
     }
 
@@ -47,35 +47,35 @@ angular.module('mineApp')
     $scope.novoContato = function(categoria){
         var tipoContato = "";
         if(categoria=="Telefone"){
-            if($scope.telefone.Contato.length<14){
+            if($scope.telefone.contato.length<14){
                 Plugins.Mensagem.erro("Número Inválido!")
                 return false;
             }
             tipoContato = "telefone";
         }else if(categoria=="Email"){
-            if($scope.email.Contato.length<7){
+            if($scope.email.contato.length<7){
                 Plugins.Mensagem.erro("Email Inválido!")
                 return false;
             }
             tipoContato = "email";
         }
-        if($scope[tipoContato].Tipo.Key==0 || $scope[tipoContato].Tipo==""){
+        if($scope[tipoContato].tipo.Key==0 || $scope[tipoContato].tipo==""){
             Plugins.Mensagem.aviso("Selecione um tipo de "+tipoContato+"!")
             return false;
         }
-        $scope[tipoContato].Categoria = categoria;
-        $scope[tipoContato].Tipo = $scope[tipoContato].Tipo.Value;
-        $scope.Cliente.cliente.Contato.push($scope[tipoContato]);
+        $scope[tipoContato].categoria = categoria;
+        $scope[tipoContato].tipo = $scope[tipoContato].tipo.Value;
+        $scope.Cliente.cliente.contato.push($scope[tipoContato]);
         $scope[tipoContato] = Objetos.Contato();
-        $scope[tipoContato].Tipo = $scope["tipo"+categoria][0];
+        $scope[tipoContato].tipo = $scope["tipo"+categoria][0];
     }
 
     $scope.apagarContato = function(index){
-        $scope.Cliente.cliente.Contato.splice(index,1);
+        $scope.Cliente.cliente.contato.splice(index,1);
     }
 
     $scope.salvar = function () {
-        if (FctObjReader.calc()==1 && $scope.Cliente.cliente.Endereco.TipoLogradouro.Key!=0) {
+        if (FctObjReader.calc()==1 && $scope.Cliente.cliente.endereco.tipoLogradouro.Key!=0) {
             FctCliente.salvarCliente();
         } else {
             Plugins.Mensagem.aviso("Preencha todos os campos obrigat&oacute;rios!")
@@ -88,20 +88,20 @@ angular.module('mineApp')
 
     $scope.gerarCoordenadas = function(){
         var cliente = $scope.Cliente.cliente;
-        if (cliente.ID) {
+        if (cliente.id) {
             $('#clienteGerarCoordenadas').hide();
             var endereco = "";
-            endereco += cliente.Endereco.TipoLogradouro.Value + ' ';
-            endereco += cliente.Endereco.Logradouro + ', ';
-            endereco += cliente.Endereco.Numero + ' - ';
-            endereco += cliente.Endereco.Bairro + ', ';
-            endereco += cliente.Endereco.Cidade.Value + ' - ';
-            endereco += cliente.Endereco.Estado.Value + ', Brasil';
+            endereco += cliente.endereco.tipoLogradouro.Value + ' ';
+            endereco += cliente.endereco.logradouro + ', ';
+            endereco += cliente.endereco.numero + ' - ';
+            endereco += cliente.endereco.bairro + ', ';
+            endereco += cliente.endereco.cidade.Value + ' - ';
+            endereco += cliente.endereco.estado.Value + ', Brasil';
             console.log(endereco);
             Plugins.Mapa.gerarCoordenadas(endereco,
                 function (coordenadas) {
                     var coord = coordenadas.lat + ',' + coordenadas.lng;
-                    cliente.Endereco.Coordenadas = coord;
+                    cliente.endereco.coordenadas = coord;
                     Plugins.Mensagem.sucesso("Coordenadas geradas com sucesso!");
                     $('#clienteGerarCoordenadas').show();
 

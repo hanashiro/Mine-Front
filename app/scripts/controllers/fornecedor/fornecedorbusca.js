@@ -54,8 +54,8 @@ angular.module('mineApp')
     }
 
     $scope.editarFornecedor = function(fornecedor){
-        $scope.Fornecedor.cliente = fornecedor;
-        $location.url('fornecedor/fornecedorCadastro/'+fornecedor.Nome);
+        $scope.Fornecedor.fornecedor = fornecedor;
+        $location.url('fornecedor/fornecedorCadastro/'+fornecedor.nome);
     }
 
     $scope.deletar = function(fornecedor){

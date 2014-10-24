@@ -17,11 +17,11 @@
 
 <section class="grid-60 grid-parent  DemoGrid" id='fornecedorLista' ng-show="Fornecedor.fornecedores.length > 0" >
     <div class="contato" ng-repeat="fornecedor in Fornecedor.fornecedores" ng-click='selecionarFornecedor(fornecedor)'>
-        <span class='fornecedorNome' >{{fornecedor.NomeFantasia}}</span>
+        <span class='fornecedorNome' >{{fornecedor.nomeFantasia}}</span>
         <div>
-            {{fornecedor.Endereco.TipoLogradouro.Value}} {{fornecedor.Endereco.Logradouro}}, {{fornecedor.Endereco.Numero}},
-            {{fornecedor.Endereco.bairro}} 
-            <br>{{fornecedor.Endereco.Cidade.Value}} - {{fornecedor.Endereco.Estado.Value}}
+            {{fornecedor.endereco.tipoLogradouro.Value}} {{fornecedor.endereco.logradouro}}, {{fornecedor.endereco.numero}},
+            {{fornecedor.endereco.bairro}} 
+            <br>{{fornecedor.endereco.cidade.Value}} - {{fornecedor.endereco.estado.Value}}
         </div>
     </div>
 </section>
@@ -29,7 +29,7 @@
 
 
 
-<div id='fornecedorDetalhes' class="grid-40 grid-parent DemoGrid" ng-show='Fornecedor.fornecedores.length>0 && Fornecedor.fornecedor.ID' >
+<div id='fornecedorDetalhes' class="grid-40 grid-parent DemoGrid" ng-show='Fornecedor.fornecedores.length>0 && Fornecedor.fornecedor.id' >
         
     <div>
         <div style="float:right;display:none;" title="Deletar" ng-click="deletar(Fornecedor.fornecedor)">
@@ -44,25 +44,25 @@
         </div>
     </div>
          
-    <span class='fornecedorNome' >{{Fornecedor.fornecedor.NomeFantasia}}</span>
-    <div id='fornecedorTelefone' ng-show="(Fornecedor.fornecedor.Contato | filter : Fornecedor.fornecedor.Contato.Categoria='Telefone').length>0">
+    <span class='fornecedorNome' >{{Fornecedor.fornecedor.nomeFantasia}}</span>
+    <div id='fornecedorTelefone' ng-show="(Fornecedor.fornecedor.contato | filter : Fornecedor.fornecedor.contato.categoria='Telefone').length>0">
         <span class="tituloSessao">Telefone</span>
         <div class="conteudoSessao" >
             <table class="conteudoSessao">
-                <tr  ng-repeat="telefone in Fornecedor.fornecedor.Contato" ng-show='telefone.Categoria=="Telefone"'>
-                    <td><b>{{telefone.Tipo}}:</b></td>
-                    <td>{{telefone.Contato}}</td>
+                <tr  ng-repeat="telefone in Fornecedor.fornecedor.contato" ng-show='telefone.categoria=="Telefone"'>
+                    <td><b>{{telefone.tipo}}:</b></td>
+                    <td>{{telefone.contato}}</td>
                 </tr>
             </table>
         </div>
     </div>
-    <div id='fornecedorEmail' ng-show="(Fornecedor.fornecedor.Contato | filter : Fornecedor.fornecedor.Contato.Categoria='Email').length>0">
+    <div id='fornecedorEmail' ng-show="(Fornecedor.fornecedor.contato | filter : Fornecedor.fornecedor.contato.categoria='Email').length>0">
         <span class="tituloSessao" >E-mail</span>
         <div class="conteudoSessao" >
             <table>
-                <tr ng-repeat="email in Fornecedor.fornecedor.Contato" ng-show='email.Categoria=="Email"'>
-                    <td> <b>{{email.Tipo}}:</b></td>
-                    <td>{{email.Contato}}</td>
+                <tr ng-repeat="email in Fornecedor.fornecedor.contato" ng-show='email.categoria=="Email"'>
+                    <td> <b>{{email.tipo}}:</b></td>
+                    <td>{{email.contato}}</td>
                 </tr>
             </table>
         </div>
@@ -70,13 +70,13 @@
     <div id="fornecedorEndereco" >    
         <div class="tituloSessao" >Endere&ccedil;o</div>
         <div class="conteudoSessao">
-            {{Fornecedor.fornecedor.Endereco.TipoLogradouro.Value}} {{Fornecedor.fornecedor.Endereco.Logradouro}}, {{Fornecedor.fornecedor.Endereco.Numero}},
-            {{Fornecedor.fornecedor.Endereco.Bairro}}, 
-            <br>{{Fornecedor.fornecedor.Endereco.Cidade.Value}} - {{Fornecedor.fornecedor.Endereco.Estado.Value}}
+            {{Fornecedor.fornecedor.endereco.tipoLogradouro.Value}} {{Fornecedor.fornecedor.endereco.logradouro}}, {{Fornecedor.fornecedor.endereco.numero}},
+            {{Fornecedor.fornecedor.endereco.bairro}}, 
+            <br>{{Fornecedor.fornecedor.endereco.cidade.Value}} - {{Fornecedor.fornecedor.endereco.estado.Value}}
         </div>
     </div>
     
-    <div id='fornecedorContainerMapa' ng-show='Fornecedor.fornecedor.Endereco.Coordenadas!=""' onclick="Core.Controles.Fornecedor.Lista.abrirMapa()" >
+    <div id='fornecedorContainerMapa' ng-show='Fornecedor.fornecedor.endereco.coordenadas!=""' onclick="Core.Controles.Fornecedor.Lista.abrirMapa()" >
         <div id='fornecedorMapa' ></div>
     </div>
 </div>

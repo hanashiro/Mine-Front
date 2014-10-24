@@ -20,22 +20,22 @@ angular.module('mineApp')
     FctObjReader.Objects.totalRead = [];
     FctObjReader.Objects.ignoreRead = [];
     FctObjReader.Objects.includeRead = [
-        [$scope.Fornecedor.fornecedor, ['NomeFantasia']],
-        [$scope.Fornecedor.fornecedor.Endereco, ['TipoLogradouro', 'Logradouro', 'Numero', 'Bairro', 'Estado', 'Cidade']]
+        [$scope.Fornecedor.fornecedor, ['nomeFantasia']],
+        [$scope.Fornecedor.fornecedor.Endereco, ['tipoLogradouro', 'logradouro', 'numero', 'bairro', 'estado', 'cidade']]
     ];
         
     $scope.estados = Colecao.Estados;
     $scope.tipoEmail = Colecao.tiposEmail;
     $scope.tipoTelefone = Colecao.tiposTelefone;
     $scope.tipoLogradouro = Colecao.tiposLogradouro;
-    $scope.cidades = Utils.Moradia.retornarCidade($scope.Fornecedor.fornecedor.Endereco.Estado.Key);
+    $scope.cidades = Utils.Moradia.retornarCidade($scope.Fornecedor.fornecedor.endereco.estado.Key);
     $scope.telefone = Objetos.Contato();
     $scope.email = Objetos.Contato();
 
     /******* FUNCOES *******/
     $scope.retornarCidades = function(){
-        $scope.cidades = Utils.Moradia.retornarCidade($scope.Fornecedor.fornecedor.Endereco.Estado.Key);
-        $scope.Fornecedor.fornecedor.Endereco.Cidade = {};
+        $scope.cidades = Utils.Moradia.retornarCidade($scope.Fornecedor.fornecedor.endereco.estado.Key);
+        $scope.Fornecedor.fornecedor.endereco.cidade = {};
     }
 
 
@@ -46,35 +46,35 @@ angular.module('mineApp')
     $scope.novoContato = function(categoria){
         var tipoContato = "";
         if(categoria=="Telefone"){
-            if($scope.telefone.Contato.length<14){
+            if($scope.telefone.contato.length<14){
                 Plugins.Mensagem.erro("Número Inválido!")
                 return false;
             }
             tipoContato = "telefone";
         }else if(categoria=="Email"){
-            if($scope.email.Contato.length<7){
+            if($scope.email.contato.length<7){
                 Plugins.Mensagem.erro("Email Inválido!")
                 return false;
             }
             tipoContato = "email";
         }
-        if($scope[tipoContato].Tipo.Key==0 || $scope[tipoContato].Tipo==""){
+        if($scope[tipoContato].tipo.Key==0 || $scope[tipoContato].tipo==""){
             Plugins.Mensagem.aviso("Selecione um tipo de "+tipoContato+"!")
             return false;
         }
-        $scope[tipoContato].Categoria = categoria;
-        $scope[tipoContato].Tipo = $scope[tipoContato].Tipo.Value;
-        $scope.Fornecedor.fornecedor.Contato.push($scope[tipoContato]);
+        $scope[tipoContato].categoria = categoria;
+        $scope[tipoContato].tipo = $scope[tipoContato].tipo.Value;
+        $scope.Fornecedor.fornecedor.contato.push($scope[tipoContato]);
         $scope[tipoContato] = Objetos.Contato();
-        $scope[tipoContato].Tipo = $scope["tipo"+categoria][0];
+        $scope[tipoContato].tipo = $scope["tipo"+categoria][0];
     }
 
     $scope.apagarContato = function(index){
-        $scope.Fornecedor.fornecedor.Contato.splice(index,1);
+        $scope.Fornecedor.fornecedor.contato.splice(index,1);
     }
 
     $scope.salvar = function(){
-        if (FctObjReader.calc() == 1 && $scope.Fornecedor.fornecedor.Endereco.TipoLogradouro.Key != 0) {
+        if (FctObjReader.calc() == 1 && $scope.Fornecedor.fornecedor.endereco.tipoLogradouro.Key != 0) {
             FctFornecedor.salvarFornecedor();
         } else {
             Plugins.Mensagem.aviso("Preencha todos os campos obrigat&oacute;rios!")

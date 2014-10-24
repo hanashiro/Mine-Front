@@ -15,7 +15,7 @@ angular.module('mineApp')
         buscarFornecedores : function(busca, tipoBusca){
             var setFornecedores = function (resp) {
                 if (resp.Status) {
-                    var fornecedores = resp.Objeto,
+                    var fornecedores = resp,
                     i = fornecedores.length;
                     if (i == 0) {
                         Plugins.Mensagem.aviso("Nenhum fornecedor encontrado");
@@ -36,7 +36,7 @@ angular.module('mineApp')
             }
         },
         salvarFornecedor : function(){
-            if(!app.fornecedor.ID){
+            if(!app.fornecedor.id){
                 FctApi.Fornecedor.salvar(app.fornecedor,
                     function(resp){
                         app.fornecedor = resp;

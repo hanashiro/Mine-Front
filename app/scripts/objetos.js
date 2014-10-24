@@ -1,71 +1,70 @@
 var Objetos = (function () {
     var Contato = function(){
-        this.ID = null;
-        this.Tipo = "";
-        this.Contato = "";
-        this.Categoria = "";
+        this.id = null;
+        this.tipo = "";
+        this.contato = "";
+        this.categoria = "";
     }
     
     var Categoria = function(){
-        this.ID = null;
-        this.Nome = "";
-        this.Ativo = true;
+        this.id = null;
+        this.nome = "";
+        this.ativo = true;
     }
     
     var Endereco = function(){
-        this.ID = null;
-        this.TipoLogradouro = Colecao.tiposLogradouro[0];
-        this.Logradouro = "";
-        this.Numero = "";
-        this.Complemento  = "";
-        this.Zona = "urbana";
-        this.Bairro = "";
-        this.Estado = Colecao.Estados[25];
-        this.Cidade = "";
-        this.CEP = "";
-        this.Coordenadas  = "";
-        this.Referencia = "";
+        this.id = null;
+        this.tipoLogradouro = Colecao.tiposLogradouro[0];
+        this.logradouro = "";
+        this.numero = "";
+        this.complemento  = "";
+        this.zona = "urbana";
+        this.bairro = "";
+        this.estado = Colecao.Estados[25];
+        this.cidade = "";
+        this.cep = "";
+        this.coordenadas  = "";
+        this.referencia = "";
     }
     
     var Cliente = function(){
-        this.ID = null;
-        this.Nome = "";
-        this.Sexo = "M";
-        this.Aniversario = "";
-        this.Anotacao = "";
-        this.CPF = "";
-        this.Ativo = true;
-        this.Contato = [];
-        this.Endereco = new Endereco();
+        this.id = null;
+        this.nome = "";
+        this.sexo = "M";
+        this.aniversario = "";
+        this.anotacao = "";
+        this.cpf = "";
+        this.ativo = true;
+        this.contato = [];
+        this.endereco = new Endereco();
     }
     
     var Fornecedor = function(){
-        this.ID = null;
-        this.Razao = "";
-        this.NomeFantasia = "";
-        this.InscricaoEstadual = "";
-        this.InscricaoMunicipal = "";
-        this.CNPJ = "";
-        this.Ativo = true;
-        this.Contato = [];
-        this.Endereco = new Endereco();
+        this.id = null;
+        this.razao = "";
+        this.nomeFantasia = "";
+        this.inscricaoEstadual = "";
+        this.inscricaoMunicipal = "";
+        this.cnpj = "";
+        this.ativo = true;
+        this.contato = [];
+        this.endereco = new Endereco();
     }
     
 
     var Produto = function () {
-        this.ID = null;
-        this.CodigoBarras = "";
-        this.Nome = "";
-        this.Descricao = "";
-        this.Fabricante = "";
-        this.PrecoEntrada = 0;
-        this.PrecoSaida = 0;
-        this.Quantidade = 0;
-        this.Ativo = true;
-        this.EstoqueMinimo = 0;
-        this.ICMS = 0;
-        this.Categoria = new Categoria();
-        this.Fornecedor = new Fornecedor();
+        this.id = null;
+        this.codigoBarras = "";
+        this.nome = "";
+        this.descricao = "";
+        this.fabricante = "";
+        this.precoEntrada = 0;
+        this.precoSaida = 0;
+        this.quantidade = 0;
+        this.ativo = true;
+        this.estoqueMinimo = 0;
+        this.icms = 0;
+        this.categoria = new Categoria();
     }
 
     return {

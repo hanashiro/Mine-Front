@@ -17,12 +17,12 @@
 
 <section class="grid-60 grid-parent  DemoGrid" id='clienteLista' ng-show="Cliente.clientes.length > 0" >
     <div class="contato" ng-repeat="cliente in Cliente.clientes" ng-click='selecionarCliente(cliente)'>
-        <img class="clienteFoto" ng-src="{{cliente.Foto=='' ? 'images/user'+cliente.Sexo+'.png' : cliente.Foto}}" />
-        <span class='clienteNome' >{{cliente.Nome}}</span>
+        <img class="clienteFoto" ng-src="{{cliente.foto=='' ? 'images/user'+cliente.sexo+'.png' : cliente.foto}}" />
+        <span class='clienteNome' >{{cliente.nome}}</span>
         <div>
-            {{cliente.Endereco.TipoLogradouro.Value}} {{cliente.Endereco.Logradouro}}, {{cliente.Endereco.Numero}},
-            {{cliente.Endereco.bairro}} 
-            <br>{{cliente.Endereco.Cidade.Value}} - {{cliente.Endereco.Estado.Value}}
+            {{cliente.endereco.tipoLogradouro.Value}} {{cliente.endereco.logradouro}}, {{cliente.endereco.numero}},
+            {{cliente.endereco.bairro}} 
+            <br>{{cliente.endereco.cidade.Value}} - {{cliente.endereco.estado.Value}}
         </div>
     </div>
 </section>
@@ -30,7 +30,7 @@
 
 
 
-<div id='clienteDetalhes' class="grid-40 grid-parent DemoGrid" ng-show='Cliente.clientes.length>0 && Cliente.cliente.ID' >
+<div id='clienteDetalhes' class="grid-40 grid-parent DemoGrid" ng-show='Cliente.clientes.length>0 && Cliente.cliente.id' >
         
     <div>
         <!--div style="float:right" title="Deletar" ng-click="deletar(Cliente.cliente)">
@@ -46,31 +46,31 @@
     </div>
          
     <img class="clienteFoto" style="margin-left: 32%;" ng-src="{{'images/user'+Cliente.cliente.Sexo+'.png'}}" />
-    <span class='clienteNome' >{{Cliente.cliente.Nome}}</span>
+    <span class='clienteNome' >{{Cliente.cliente.nome}}</span>
     <div ng-show="Cliente.cliente.Anotacao.length>0" >
         <div class="tituloSessao" >Anota&ccedil;&otilde;es</div>
         <div class="conteudoSessao" style="white-space: pre-line;margin-top: -15px;">
-            {{Cliente.cliente.Anotacao}}
+            {{Cliente.cliente.anotacao}}
         </div>
     </div>
-    <div id='clienteTelefone' ng-show="(Cliente.cliente.Contato | filter : Cliente.cliente.Contato.Categoria='Telefone').length>0">
+    <div id='clienteTelefone' ng-show="(Cliente.cliente.contato | filter : Cliente.cliente.contato.categoria='Telefone').length>0">
         <span class="tituloSessao">Telefone</span>
         <div class="conteudoSessao" >
             <table class="conteudoSessao">
-                <tr  ng-repeat="telefone in Cliente.cliente.Contato" ng-show='telefone.Categoria=="Telefone"'>
-                    <td><b>{{telefone.Tipo}}:</b></td>
-                    <td>{{telefone.Contato}}</td>
+                <tr  ng-repeat="telefone in Cliente.cliente.contato" ng-show='telefone.categoria=="Telefone"'>
+                    <td><b>{{telefone.tipo}}:</b></td>
+                    <td>{{telefone.contato}}</td>
                 </tr>
             </table>
         </div>
     </div>
-    <div id='clienteEmail' ng-show="(Cliente.cliente.Contato | filter : Cliente.cliente.Contato.Categoria='Email').length>0">
+    <div id='clienteEmail' ng-show="(Cliente.cliente.contato | filter : Cliente.cliente.contato.categoria='Email').length>0">
         <span class="tituloSessao" >E-mail</span>
         <div class="conteudoSessao" >
             <table>
-                <tr ng-repeat="email in Cliente.cliente.Contato" ng-show='email.Categoria=="Email"'>
-                    <td> <b>{{email.Tipo}}:</b></td>
-                    <td>{{email.Contato}}</td>
+                <tr ng-repeat="email in Cliente.cliente.contato" ng-show='email.categoria=="Email"'>
+                    <td> <b>{{email.tipo}}:</b></td>
+                    <td>{{email.contato}}</td>
                 </tr>
             </table>
         </div>
@@ -78,15 +78,15 @@
     <div id="clienteEndereco" >    
         <div class="tituloSessao" >Endere&ccedil;o</div>
         <div class="conteudoSessao">
-            {{Cliente.cliente.Endereco.TipoLogradouro.Value}} {{Cliente.cliente.Endereco.Logradouro}}, {{Cliente.cliente.Endereco.Numero}},
-            {{Cliente.cliente.Endereco.Bairro}}, 
-            <br>{{Cliente.cliente.Endereco.Cidade.Value}} - {{Cliente.cliente.Endereco.Estado.Value}}
+            {{Cliente.cliente.endereco.tipoLogradouro.Value}} {{Cliente.cliente.endereco.logradouro}}, {{Cliente.cliente.endereco.numero}},
+            {{Cliente.cliente.endereco.bairro}}, 
+            <br>{{Cliente.cliente.endereco.cidade.Value}} - {{Cliente.cliente.endereco.estado.Value}}
         </div>
     </div>
-    <div ng-show='Cliente.cliente.Endereco.Coordenadas!=""' style="text-align:right;padding-right:5%;">
+    <div ng-show='Cliente.cliente.endereco.coordenadas!=""' style="text-align:right;padding-right:5%;">
         <button class="btn btn-info" ng-click="abrirMapa()"><i class="fa fa-arrows-alt"></i></button>
     </div>
-    <div id='clienteContainerMapa' ng-show='Cliente.cliente.Endereco.Coordenadas!=""'>
+    <div id='clienteContainerMapa' ng-show='Cliente.cliente.endereco.coordenadas!=""'>
         <div id='clienteMapa' ></div>
     </div>
 </div>

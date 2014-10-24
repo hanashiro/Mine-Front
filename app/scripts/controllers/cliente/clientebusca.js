@@ -56,7 +56,7 @@ angular.module('mineApp')
 
     $scope.editarCliente = function(cliente){
         $scope.Cliente.cliente = cliente;
-        $location.url('cliente/clienteCadastro/'+cliente.Nome);
+        $location.url('cliente/clienteCadastro/'+cliente.nome);
     }
 
     $scope.deletar = function(cliente){
@@ -65,9 +65,9 @@ angular.module('mineApp')
 
     $scope.iniciarMapa = function () {
         var cliente = $scope.Cliente.cliente;
-        if(cliente.Endereco.Coordenadas!=""){
-            Plugins.Mapa.iniciar('clienteMapa', cliente.Endereco.Coordenadas);
-            Plugins.Mapa.marcador(cliente.Endereco.Coordenadas, false, false,
+        if(cliente.endereco.coordenadas!=""){
+            Plugins.Mapa.iniciar('clienteMapa', cliente.endereco.coordenadas);
+            Plugins.Mapa.marcador(cliente.endereco.coordenadas, false, false,
                 function (marcador, evento) {
                     /*if (confirm("Deseja salvar a nova posição?")) {
                         marcador.marker.setPosition(marcador.posicaoFinal);

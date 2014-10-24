@@ -15,7 +15,7 @@ angular.module('mineApp')
         buscarClientes : function(busca,tipoBusca){
             var setClientes = function(resp){
                 if(resp.Status){
-                    var clientes = resp.Objeto,
+                    var clientes = resp,
                     i = clientes.length;
                     if(i==0){
                         Plugins.Mensagem.aviso("Nenhum cliente encontrado");
@@ -36,7 +36,7 @@ angular.module('mineApp')
             }
         },
         salvarCliente : function(){
-            if(!app.cliente.ID){
+            if(!app.cliente.id){
                 FctApi.Cliente.salvar(app.cliente,
                     function(resp){
                         app.cliente = resp;

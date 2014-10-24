@@ -14,19 +14,19 @@
            </tab-heading>
            <table id="cliCadastro1" class="cadastro">
                <tr>
-               <td>Nome*</td> <td><input type='text' size="60" ng-model="Cliente.cliente.Nome"  /></td>
+               <td>Nome*</td> <td><input type='text' size="60" ng-model="Cliente.cliente.nome"  /></td>
                </tr>
                <tr>
-               <td>Sexo*</td> <td><input type='radio' ng-model='Cliente.cliente.Sexo' value='M'/>Masculino <input type='radio' ng-model='Cliente.cliente.Sexo' value='F' />Feminino</td>
+               <td>Sexo*</td> <td><input type='radio' ng-model='Cliente.cliente.sexo' value='M'/>Masculino <input type='radio' ng-model='Cliente.cliente.sexo' value='F' />Feminino</td>
                </tr>
                <tr>
-               <td>Anivers&aacute;rio:</td> <td><input id='clienteAniversario' type='date' ng-model="Cliente.cliente.Aniversario" /></td>
+               <td>Anivers&aacute;rio:</td> <td><input id='clienteAniversario' type='date' ng-model="Cliente.cliente.aniversario" /></td>
                </tr>
                <tr>
-               <td>Anota&ccedil;&atilde;o:</td> <td><textarea rows="6" cols="60" ng-model="Cliente.cliente.Anotacao" ></textarea></td>
+               <td>Anota&ccedil;&atilde;o:</td> <td><textarea rows="6" cols="60" ng-model="Cliente.cliente.anotacao" ></textarea></td>
                </tr>
-               <tr ng-show="Cliente.cliente.ID" >
-                   <td colspan="2"><input type='checkbox' ng-model="Cliente.cliente.Ativo" />Ativo</td>
+               <tr ng-show="Cliente.cliente.id" >
+                   <td colspan="2"><input type='checkbox' ng-model="Cliente.cliente.ativo" />Ativo</td>
                </tr>
            </table>
        </tab>
@@ -36,9 +36,9 @@
            </tab-heading>
            <table id="cliCadastro2" class="cadastro">
                <th colspan='5'>Telefone</th>
-               <tr ng-repeat='tel in Cliente.cliente.Contato' ng-show='tel.Categoria=="Telefone"'>
-                   <td colspan='2'>{{tel.Tipo.hasOwnProperty('Value') ? tel.Tipo.Value : tel.Tipo}}</td>
-                   <td colspan='2'>{{tel.Contato}}</td>
+               <tr ng-repeat='tel in Cliente.cliente.contato' ng-show='tel.categoria=="Telefone"'>
+                   <td colspan='2'>{{tel.tipo.hasOwnProperty('Value') ? tel.tipo.Value : tel.Tipo}}</td>
+                   <td colspan='2'>{{tel.contato}}</td>
                    <td>
                        <button ng-click="apagarContato($index)" class="btn btn-danger btn-xs">
                            <i class="glyphicon glyphicon-remove"></i>
@@ -48,9 +48,9 @@
                <tr>
                <tr style="height:20px;"><td colspan='5'></td></tr>
                <td>Tipo</td>
-               <td><select ng-model='telefone.Tipo' ng-options='t.Value for t in tipoTelefone' ng-init='telefone.Tipo=tipoTelefone[0]'></select></td>
+               <td><select ng-model='telefone.tipo' ng-options='t.Value for t in tipoTelefone' ng-init='telefone.tipo=tipoTelefone[0]'></select></td>
                <td>N&uacute;mero:</td>
-               <td><input size="33" type='tel' ng-model='telefone.Contato' maxlength="15" onkeydown="Utils.Mascaras.numerosTeclado();" onkeyup='this.value=Utils.Mascaras.addTel(this.value);' /></td>
+               <td><input size="33" type='tel' ng-model='telefone.contato' maxlength="15" onkeydown="Utils.Mascaras.numerosTeclado();" onkeyup='this.value=Utils.Mascaras.addTel(this.value);' /></td>
                <td>
                    <button ng-click="novoContato('Telefone')" class="btn btn-success btn-xs">
                        <i class="glyphicon glyphicon-plus"></i>
@@ -59,9 +59,9 @@
                </tr>
                <tr style="height:25px;"><td colspan='5'><hr style="border: solid 1px #ccc;"></td></tr>
                <th colspan='5'>E-mail</th>
-               <tr ng-repeat='ema in Cliente.cliente.Contato' ng-show='ema.Categoria=="Email"'>
-                   <td colspan='2'>{{ema.Tipo.hasOwnProperty('Value') ? ema.Tipo.Value:ema.Tipo}}</td>
-                   <td colspan='2'>{{ema.Contato}}</td>
+               <tr ng-repeat='ema in Cliente.cliente.contato' ng-show='ema.categoria=="Email"'>
+                   <td colspan='2'>{{ema.tipo.hasOwnProperty('Value') ? ema.tipo.Value:ema.tipo}}</td>
+                   <td colspan='2'>{{ema.contato}}</td>
                    <td>
                        <button ng-click="apagarContato($index)" class="btn btn-danger btn-xs">
                            <i class="glyphicon glyphicon-remove"></i>
@@ -71,9 +71,9 @@
                <tr>
                <tr style="height:20px;"><td colspan='5'></td></tr>
                <td>Tipo</td>
-               <td><select ng-model='email.Tipo' ng-options='t.Value for t in tipoEmail' ng-init='email.Tipo=tipoEmail[0]'></select></td>
+               <td><select ng-model='email.tipo' ng-options='t.Value for t in tipoEmail' ng-init='email.tipo=tipoEmail[0]'></select></td>
                <td>Endere&ccedil;o:</td>
-               <td><input size="33" type='email' ng-model="email.Contato" /></td>
+               <td><input size="33" type='email' ng-model="email.contato" /></td>
                <td>
                    <button ng-click="novoContato('Email')" class="btn btn-success btn-xs">
                        <i class="glyphicon glyphicon-plus"></i>
@@ -89,39 +89,39 @@
            <table id="cliCadastro3" class="cadastro">
                <tr>
                    <td>Logradouro*</td>
-                   <td><select ng-model='Cliente.cliente.Endereco.TipoLogradouro' ng-options='l.Value for l in tipoLogradouro'></select></td>
-                   <td colspan='2'><input type='text' style="width:100%;" ng-model="Cliente.cliente.Endereco.Logradouro" tooltip="{{Cliente.cliente.Endereco.TipoLogradouro.Value}}" tooltip-trigger="focus" tooltip-placement="right" /></td>
+                   <td><select ng-model='Cliente.cliente.endereco.tipoLogradouro' ng-options='l.Value for l in tipoLogradouro'></select></td>
+                   <td colspan='2'><input type='text' style="width:100%;" ng-model="Cliente.cliente.endereco.logradouro" tooltip="{{Cliente.cliente.endereco.tipoLogradouro.Value}}" tooltip-trigger="focus" tooltip-placement="right" /></td>
                </tr>
                <tr>
                    <td>N&uacute;mero*</td>
-                   <td><input type='text' ng-model="Cliente.cliente.Endereco.Numero" /> </td>
+                   <td><input type='text' ng-model="Cliente.cliente.endereco.numero" /> </td>
                    <td>Complemento</td>
-                   <td><input type='text' style="width:100%;" ng-model="Cliente.cliente.Endereco.Complemento" /></td>
+                   <td><input type='text' style="width:100%;" ng-model="Cliente.cliente.endereco.complemento" /></td>
                </tr>
                <tr>
                    <td>Zona</td>
-                   <td><input type='radio' ng-model='Cliente.cliente.Endereco.Zona' value='urbana' />Urbana <input type='radio' ng-model='Cliente.cliente.Endereco.Zona' value='rural' />Rural</td>
+                   <td><input type='radio' ng-model='Cliente.cliente.endereco.zona' value='urbana' />Urbana <input type='radio' ng-model='Cliente.cliente.endereco.zona' value='rural' />Rural</td>
                    <td>CEP</td>
-                   <td><input type='text' ng-model="Cliente.cliente.Endereco.CEP" /></td>
+                   <td><input type='text' ng-model="Cliente.cliente.endereco.cep" /></td>
                </tr>
                <tr>
                    <td>Bairro*</td>
-                   <td colspan='3'><input type='text' ng-model='Cliente.cliente.Endereco.Bairro' /></td>
+                   <td colspan='3'><input type='text' ng-model='Cliente.cliente.endereco.bairro' /></td>
                </tr>
                <tr>
                    <td>Estado*</td>
-                   <td><select ng-model="Cliente.cliente.Endereco.Estado" ng-change="retornarCidades();" ng-options="e.Value for e in estados"></select></td>
+                   <td><select ng-model="Cliente.cliente.endereco.estado" ng-change="retornarCidades();" ng-options="e.Value for e in estados"></select></td>
                    <td>Cidade*</td>
-                   <td><select ng-model="Cliente.cliente.Endereco.Cidade" ng-options="c.Value for c in cidades"></select></td>
+                   <td><select ng-model="Cliente.cliente.endereco.cidade" ng-options="c.Value for c in cidades"></select></td>
                </tr>
                <tr>
                    <td>Coordenadas</td>
-                   <td><input type='text' ng-model="Cliente.cliente.Endereco.Coordenadas" readonly="readonly" /></td>
-                   <td colspan="2"><input type='button' id='clienteGerarCoordenadas' ng-click="gerarCoordenadas()" value="Gerar Coordenadas" ng-show="Cliente.cliente.ID" /></td>
+                   <td><input type='text' ng-model="Cliente.cliente.endereco.coordenadas" readonly="readonly" /></td>
+                   <td colspan="2"><input type='button' id='clienteGerarCoordenadas' ng-click="gerarCoordenadas()" value="Gerar Coordenadas" ng-show="Cliente.cliente.id" /></td>
                </tr>
                <tr>
                    <td>Refer&ecirc;ncia</td>
-                   <td colspan="3"><textarea rows="2" style="width:100%;" ng-model="Cliente.cliente.Endereco.Referencia"></textarea></td>
+                   <td colspan="3"><textarea rows="2" style="width:100%;" ng-model="Cliente.cliente.endereco.referencia"></textarea></td>
                </tr>
            </table>
        </tab>

@@ -121,16 +121,16 @@ var Utils = (function(){
                 },
                 Integracao : {
                     buscar: function(obj){
-                        obj.Endereco.Estado = Utils.Moradia.estadoByKey(parseInt(obj.Endereco.Estado,10));
-                        obj.Endereco.Cidade = Utils.Moradia.cidadeByKey(parseInt(obj.Endereco.Cidade,10),obj.Endereco.Estado.Key);
-                        obj.Endereco.TipoLogradouro = Utils.Moradia.tipoLogradouroByKey(parseInt(obj.Endereco.TipoLogradouro,10));
+                        obj.endereco.estado = Utils.Moradia.estadoByKey(parseInt(obj.endereco.estado,10));
+                        obj.endereco.cidade = Utils.Moradia.cidadeByKey(parseInt(obj.endereco.cidade,10),obj.endereco.estado.Key);
+                        obj.endereco.tipoLogradouro = Utils.Moradia.tipoLogradouroByKey(parseInt(obj.endereco.tipoLogradouro,10));
                         return obj;
                     },
                     salvar : function(obj){
                         obj = JSON.parse(JSON.stringify(obj));
-                        obj.Endereco.TipoLogradouro = obj.Endereco.TipoLogradouro.Key+"";
-                        obj.Endereco.Estado = obj.Endereco.Estado.Key+"";
-                        obj.Endereco.Cidade = obj.Endereco.Cidade.Key+"";
+                        obj.endereco.tipoLogradouro = obj.endereco.tipoLogradouro.Key+"";
+                        obj.endereco.estado = obj.endereco.estado.Key+"";
+                        obj.endereco.cidade = obj.endereco.cidade.Key+"";
                         return obj;
                     }
                 }
