@@ -90,13 +90,13 @@ angular.module('mineApp')
                     api.get('cliente/'+id,sucesso,erro);
                 },
                 buscarTodos : function(sucesso,erro){
-                    api.get('cliente',sucesso,erro);
+                    api.get('cliente/',sucesso,erro);
                 },
                 buscarNome : function(nome, sucesso, erro){
-                    api.get('cliente/busca/'+nome,sucesso,erro);
+                    api.get('cliente/nome/'+nome,sucesso,erro);
                 },
                 buscarContato : function(contato, sucesso, erro){
-                    api.get('cliente/contato/'+contato,sucesso,erro)
+                    api.get('cliente/telefone/'+contato,sucesso,erro)
                 },
                 salvar : function(obj,sucesso,erro){
                     obj = Utils.Moradia.Integracao.salvar(obj);
@@ -120,7 +120,7 @@ angular.module('mineApp')
                     api.get('fornecedor',sucesso,erro);
                 },
                 buscarNome : function(nome, sucesso, erro){
-                    api.get('fornecedor/buscar/'+nome,sucesso,erro);
+                    api.get('fornecedor/nome/'+nome,sucesso,erro);
                 },
                 buscarContato: function (contato, sucesso, erro) {
                     api.get('fornecedor/contato/' + contato, sucesso, erro);
