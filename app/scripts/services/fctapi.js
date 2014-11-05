@@ -153,6 +153,12 @@ angular.module('mineApp')
                 buscar : function(id,sucesso,erro){
                     api.get('produto/'+id,sucesso,erro);
                 },
+                buscarNome : function(nome, sucesso, erro){
+                    api.get('produto/nome/'+nome,sucesso,erro);
+                },
+                buscarCodigoBarras: function (codBarras, sucesso, erro) {
+                    api.get('produto/cdbarras/' + codBarras, sucesso, erro);
+                },
                 buscarTodos : function(sucesso,erro){
                     api.get('produto',sucesso,erro);
                 },

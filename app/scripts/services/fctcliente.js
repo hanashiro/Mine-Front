@@ -14,7 +14,6 @@ angular.module('mineApp')
         clientes: [],
         buscarClientes : function(busca,tipoBusca){
             var setClientes = function(resp){
-                if(resp.Status){
                     var clientes = resp,
                     i = clientes.length;
                     if(i==0){
@@ -24,7 +23,7 @@ angular.module('mineApp')
                         clientes[i] = Utils.Moradia.Integracao.buscar(clientes[i]);
                     }
                     app.clientes = clientes;
-                }
+                
             }
             var erro = function(erro){
                 Plugins.Mensagem.erro("Erro ao buscar clientes");

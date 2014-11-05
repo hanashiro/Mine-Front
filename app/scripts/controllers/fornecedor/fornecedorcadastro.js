@@ -21,7 +21,7 @@ angular.module('mineApp')
     FctObjReader.Objects.ignoreRead = [];
     FctObjReader.Objects.includeRead = [
         [$scope.Fornecedor.fornecedor, ['nomeFantasia']],
-        [$scope.Fornecedor.fornecedor.Endereco, ['tipoLogradouro', 'logradouro', 'numero', 'bairro', 'estado', 'cidade']]
+        [$scope.Fornecedor.fornecedor.endereco, ['tipoLogradouro', 'logradouro', 'numero', 'bairro', 'estado', 'cidade']]
     ];
         
     $scope.estados = Colecao.Estados;

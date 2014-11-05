@@ -1,19 +1,19 @@
 var Objetos = (function () {
     var Contato = function(){
-        this.id = null;
+        /*this.id = null;*/
         this.tipo = "";
         this.contato = "";
         this.categoria = "";
     }
     
     var Categoria = function(){
-        this.id = null;
+        /*this.id = null;*/
         this.nome = "";
         this.ativo = true;
     }
     
     var Endereco = function(){
-        this.id = null;
+        /*this.id = null;*/
         this.tipoLogradouro = Colecao.tiposLogradouro[0];
         this.logradouro = "";
         this.numero = "";
@@ -28,7 +28,7 @@ var Objetos = (function () {
     }
     
     var Cliente = function(){
-        this.id = null;
+        /*this.id = null;*/
         this.nome = "";
         this.sexo = "M";
         this.aniversario = "";
@@ -40,7 +40,7 @@ var Objetos = (function () {
     }
     
     var Fornecedor = function(){
-        this.id = null;
+        /*this.id = null;*/
         this.razao = "";
         this.nomeFantasia = "";
         this.inscricaoEstadual = "";
@@ -53,7 +53,7 @@ var Objetos = (function () {
     
 
     var Produto = function () {
-        this.id = null;
+        /*this.id = null;*/
         this.codigoBarras = "";
         this.nome = "";
         this.descricao = "";

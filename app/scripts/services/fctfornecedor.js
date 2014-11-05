@@ -14,7 +14,6 @@ angular.module('mineApp')
         fornecedores: [],
         buscarFornecedores : function(busca, tipoBusca){
             var setFornecedores = function (resp) {
-                if (resp.Status) {
                     var fornecedores = resp,
                     i = fornecedores.length;
                     if (i == 0) {
@@ -24,7 +23,6 @@ angular.module('mineApp')
                         fornecedores[i] = Utils.Moradia.Integracao.buscar(fornecedores[i]);
                     }
                     app.fornecedores = fornecedores;
-                }
             }
             var erro = function (erro) {
                 Plugins.Mensagem.erro("Erro ao buscar fornecedores");

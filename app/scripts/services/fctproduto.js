@@ -14,7 +14,6 @@ angular.module('mineApp')
         produtos: [],
         buscarProdutos : function(busca,tipoBusca){
             var setProdutos = function(resp){
-                if(resp.Status){
                     var produto = resp,
                     i = produto.length;
                     if(i==0){
@@ -22,7 +21,6 @@ angular.module('mineApp')
                     }
 
                     app.produtos = produto;
-                }
             }
             var erro = function(erro){
                 Plugins.Mensagem.erro("Erro ao buscar produtos");
