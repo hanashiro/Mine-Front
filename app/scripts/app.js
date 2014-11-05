@@ -48,6 +48,14 @@ angular
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
       })
+      .when('/produto/produtoCadastro/:nome', {
+        templateUrl: 'views/produto/produtocadastro.html',
+        controller: 'ProdutoProdutocadastroCtrl'
+      })
+      .when('/produto/produtoBusca', {
+        templateUrl: 'views/produto/produtobusca.html',
+        controller: 'ProdutoProdutobuscaCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -80,6 +88,12 @@ angular
           break;
           case "views/fornecedor/fornecedorcadastro.html" :
               $('.div_location').html('Fornecedor <i class="fa fa-arrow-right"></i> Cadastro');
+          break;
+          case "views/produto/produtobusca.html" :
+              $('.div_location').html('Produto <i class="fa fa-arrow-right"></i> Busca');
+          break;
+          case "views/produto/produtocadastro.html" :
+              $('.div_location').html('Produto <i class="fa fa-arrow-right"></i> Cadastro');
           break;
       }
     });

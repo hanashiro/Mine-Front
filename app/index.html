@@ -62,14 +62,18 @@
                         <span>Cadastro de Clientes</span><img src="scripts/vendors/dock/dock/icons/contact_new.png"/>
                     </a>
                 </li>
-                <!--li class="seperator"></!--li>
+                <li class="seperator"></li>
                 <li style="cursor:pointer;">
-                    <a>
+                    <a href="#produto/produtoBusca" >
                         <span>Produtos</span><img src="scripts/vendors/dock/dock/icons/products2.png"/>
                     </a>
                 </li>
-                <li class="seperator"></li>
                 <li style="cursor:pointer;">
+                    <a href="#produto/produtoCadastro/novo_produto" >
+                        <span>Cadastro de Produtos</span><img src="scripts/vendors/dock/dock/icons/products2.png"/>
+                    </a>
+                </li>
+                <!--li style="cursor:pointer;">
                     <a href="#vendaNova" >
                         <span>Nova Venda</span><img src="scripts/vendors/dock/dock/icons/empty-cart.png"/>
                     </a>
@@ -185,6 +189,9 @@
         <script src="scripts/services/fctfornecedor.js"></script>
         <script src="scripts/services/fctlogin.js"></script>
         <script src="scripts/services/fctobjreader.js"></script>
+        <script src="scripts/controllers/produto/produtocadastro.js"></script>
+        <script src="scripts/controllers/produto/produtobusca.js"></script>
+        <script src="scripts/services/fctproduto.js"></script>
         <!-- endbuild -->
 
         <script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=false"></script>

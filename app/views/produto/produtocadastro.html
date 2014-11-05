@@ -1,0 +1,63 @@
+<div class="DemoGrid topo" xmlns="http://www.w3.org/1999/html">
+    <button class="btn btn-success" style="width:150px;" ng-click="salvar()" >
+        <i class="glyphicon glyphicon-ok" ></i> Salvar
+    </button>
+</div>
+
+<div class="clear" style="height: 70px;" ></div>
+
+<div class="push-20 grid-60 DemoGrid" >
+  <div class="grid-100 grid-parent" >
+    <div class="grid-25" >C&oacute;d Barras</div>
+    <div class="grid-50" >Nome</div>
+    <div class="grid-25" >Categoria</div>
+  </div>
+
+  <div class="grid-100 grid-parent" >
+    <div class="grid-25" >
+      <input type="text" style="width:100%" ng-model="Produto.produto.codigoBarras" />
+    </div>
+    <div class="grid-50" >
+      <input type="text" style="width:100%" ng-model="Produto.produto.nome" />
+    </div>
+    <div class="grid-25" >
+      <select style="width:100%" ng-model="Produto.produto.categoria" ></select>
+    </div>
+  </div>
+
+  <div clas="clear" style="height: 20px;;" ></div>
+
+  <div class="grid-100 grid-parent">
+    <div class="grid-25" >Pre&ccedil;o Entrada</div>
+    <div class="grid-25" >Pre&ccedil;o Sa&iacute;da</div>
+    <div class="grid-25" >Quantidade</div>
+    <div class="grid-25" >Estoque M&iacute;nimo</div>
+  </div>
+
+  <div class="grid-100 grid-parent" >
+    <div class="grid-25" >
+      <input type="text" style="width:100%" ng-model="Produto.produto.precoEntrada" />
+    </div>
+    <div class="grid-25" >
+      <input type="text" style="width:100%" ng-model="Produto.produto.precoSaida" />
+    </div>
+    <div class="grid-25" >
+      <input type="text" style="width:100%" ng-model="Produto.produto.quantidade" />
+    </div>
+    <div class="grid-25" >
+      <input type="text" style="width:100%" ng-model="Produto.produto.estoqueMinimo" />
+    </div>
+  </div>
+
+  <div clas="clear" style="height: 20px;;" ></div>
+
+  <div class="grid-100 grid-parent" >
+    <div class="grid-100" >
+      Descri&ccedil;&atilde;o
+    </div>
+    <div class="grid-100" >
+      <textarea style="width:100%" ng-model="Produto.produto.descricao" ></textarea>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,170 @@
+<div class="DemoGrid topo">
+  <div class="grid-50 push-20" >
+    <input type="search" autofocus placeholder="Pesquisar" class="form-control" ng-model="busca"/>
+  </div>
+  <div class="grid-10 push-20" >
+    <button type="button" ng-click="buscar()" class="btn btn-default">
+      <i class="glyphicon glyphicon-search" ></i> Buscar
+    </button>
+  </div>
+</div>
+
+<div class="clear" style="height: 60px;" ></div>
+
+
+
+
+
+<section class="grid-60 grid-parent  DemoGrid" id='clienteLista' ng-show="Produto.produtos.length > 0" >
+  <header class="grid-100 grid-parent tituloSessao" >
+    <div class="grid-70" ><b>Nome</b></div>
+    <div class="grid-10" style="text-align:center;" ><b>Qtde.</b></div>
+    <div class="grid-20" style="text-align:right;" ><b>Pre&ccedil;o Sa&iacute;da</b></div>
+  </header>
+  <div ng-repeat="produto in Produto.produtos" class="grid-100 grid-parent listaProdutos" ng-click='selecionarProduto(produto)'>
+    <div class="grid-70" >{{produto.nome}}</div>
+    <div class="grid-10" style="text-align:center;" >{{produto.quantidade}}</div>
+    <div class="grid-20" style="text-align:right;" >{{produto.precoSaida}}</div>
+  </div>
+</section>
+
+
+
+
+<div id='clienteDetalhes' class="grid-35 push-5 grid-parent DemoGrid" ng-show='Produto.produtos.length>0 && Produto.produto.id' >
+
+  <div>
+    <!--div style="float:right" title="Deletar" ng-click="deletar(Cliente.cliente)">
+        <button class="btn btn-danger" >
+            <i class="glyphicon glyphicon-remove" ></i>
+        </button>
+    </div-->
+    <div style="float:right" title="Editar" ng-click="editarProduto(Produto.produto)">
+      <button class="btn btn-info" >
+        <i class="glyphicon glyphicon-pencil" ></i>
+      </button>
+    </div>
+  </div>
+
+
+  <div style='font-size: 12px;' >
+    <i class="fa fa-barcode" style="font-size:16px;" ></i> &nbsp;{{Produto.produto.codigoBarras}}
+  </div>
+  <span class='clienteNome' style='font-size: 22px;' >{{Produto.produto.nome}}</span>
+  <div style='font-size: 12px;text-align: center;' >{{Produto.produto.categoria.nome || 'Refrigerante'}}</div>
+
+  <div id='clienteTelefone'>
+    <span class="tituloSessao">Pre&ccedil;o</span>
+    <div class="conteudoSessao" >
+      <span class="icon-export-import icon-import" ><i class="fa fa-long-arrow-up" ></i></span> Entrada
+      <span style="float: right;" >{{Produto.produto.precoEntrada}}</span> <br>
+      <span class="icon-export-import icon-export"><i class="fa fa-long-arrow-up" ></i></span> Sa&iacute;da
+      <span style="float: right;" >{{Produto.produto.precoSaida}}</span>
+    </div>
+  </div>
+
+  <div id='clienteEmail'>
+    <span class="tituloSessao" >Estoque</span>
+    <div class="conteudoSessao" >
+      <i class="fa fa-cubes" ></i> Quantidade <span style="float: right;" >{{Produto.produto.quantidade}}</span><br>
+      <i class="fa fa-cube" ></i> &nbsp;Estoque M&iacute;nimo  <span style="float: right;" >{{Produto.produto.estoqueMinimo}}</span>
+    </div>
+  </div>
+
+  <div ng-show="Produto.produto.descricao" id=''>
+    <span class="tituloSessao">Descri&ccedil;ao</span>
+    <div class="conteudoSessao" style="white-space: pre-line;" >
+      {{Produto.produto.descricao}}
+    </div>
+  </div>
+</div>
+
+
+<div style='clear:both;' ></div>
+
+
+
+<style>
+  .contato{
+    background-color: #FFFFFF;
+    border: solid 1px #D2D3D6;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 1%;
+    margin-left: 1%;
+    width: 30%;
+    float: left;
+  }
+  .contato:hover{
+    cursor:pointer;
+    opacity: 0.75;
+  }
+  .clienteNome{
+    display: block;
+    text-align: center;
+    font-family: Calibri,Verdana,Arial,sans-serif;
+    font-size: 1.1em;
+    font-weight: bold;
+  }
+  .tituloSessao{
+    background : #4E87DB;
+    background-image: url(images/logo_fundo.png);
+    width : 100%;
+    color : #FFF;
+    font-family: Calibri,Verdana,Arial,sans-serif;
+    font-size: 1.1em;
+    font-weight: bold;
+    display:block;
+    margin-bottom: 5px;
+    text-indent: 2%;
+  }
+  .conteudoSessao{
+    padding-left: 5%;
+  }
+  #clienteBusca{
+    width: 40%;
+    position: relative;
+    top: 15px;
+    height: 30px;
+    font-size: 1.3em;
+  }
+  #clienteLista{
+    float: left;
+    max-height: 750px;
+    background: #e9eaed;
+    border: solid 1px #D2D3D6;
+    overflow-y: auto;
+  }
+  .listaProdutos:nth-child(even){
+    background-color: #fff;
+  }
+
+  .listaProdutos:hover{
+    background-color: #ccc;;
+    cursor: pointer;
+  }
+
+  .icon-export-import{
+    border: 1px solid;
+    border-radius: 5px;
+    width: 17px;
+    height: 17px;
+    display: inline-block;
+    position: relative;
+    margin-bottom: -4px;
+  }
+  .icon-export-import i{
+    position: absolute;
+    top: -7px;
+    right: -2px;
+    font-weight: bolder;
+    font-size: 16px;
+  }
+  .icon-export i{
+    transform: rotate(45deg);
+  }
+  .icon-import i{
+    transform: rotate(225deg);
+  }
+</style>
