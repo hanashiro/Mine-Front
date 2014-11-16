@@ -100,11 +100,11 @@ angular.module('mineApp')
                 },
                 salvar : function(obj,sucesso,erro){
                     obj = Utils.Moradia.Integracao.salvar(obj);
-                    api.post('cliente',obj,sucesso,erro);
+                    api.post('cliente/cadastrar/',obj,sucesso,erro);
                 },
                 alterar : function(obj,sucesso,erro){
                     obj = Utils.Moradia.Integracao.salvar(obj);
-                    api.put('cliente',obj,sucesso,erro);
+                    api.put('cliente/alterar/',obj,sucesso,erro);
                 },
                 deletar : function(id,sucesso,erro){
                     api.del('cliente',id,sucesso,erro);
@@ -127,11 +127,11 @@ angular.module('mineApp')
                 },
                 salvar : function(obj,sucesso,erro){
                     obj = Utils.Moradia.Integracao.salvar(obj);
-                    api.post('fornecedor',obj,sucesso,erro);
+                    api.post('fornecedor/cadastrar/',obj,sucesso,erro);
                 },
                 alterar : function(obj,sucesso,erro){
                     obj = Utils.Moradia.Integracao.salvar(obj);
-                    api.put('fornecedor',obj,sucesso,erro);
+                    api.put('fornecedor/alterar/',obj,sucesso,erro);
                 },
                 deletar : function(id,sucesso,erro){
                     api.del('fornecedor',id,sucesso,erro);
