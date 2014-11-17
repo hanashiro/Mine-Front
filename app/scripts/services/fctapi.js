@@ -74,10 +74,10 @@ angular.module('mineApp')
                     api.get('categoria',sucesso,erro);
                 },
                 salvar : function(obj,sucesso,erro){
-                    api.post('categoria',obj,sucesso,erro);
+                    api.post('categoria/cadastrar/',obj,sucesso,erro);
                 },
                 alterar : function(obj,sucesso,erro){
-                    api.put('categoria',obj,sucesso,erro);
+                    api.put('categoria/alterar/',obj,sucesso,erro);
                 },
                 deletar : function(id,sucesso,erro){
                     api.del('categoria',id,sucesso,erro);

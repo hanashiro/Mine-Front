@@ -17,7 +17,7 @@
 
 <section class="grid-60 grid-parent  DemoGrid" id='clienteLista' ng-show="Cliente.clientes.length > 0" >
     <div class="contato" ng-repeat="cliente in Cliente.clientes" ng-click='selecionarCliente(cliente)'>
-        <img class="clienteFoto" ng-src="{{cliente.foto=='' ? 'images/user'+cliente.sexo+'.png' : cliente.foto}}" />
+        <img class="clienteFoto" ng-src="{{'images/user'+cliente.sexo+'.png'}}" />
         <span class='clienteNome' >{{cliente.nome}}</span>
         <div>
             {{cliente.endereco.tipoLogradouro.Value}} {{cliente.endereco.logradouro}}, {{cliente.endereco.numero}},
@@ -45,7 +45,7 @@
         </div>
     </div>
          
-    <img class="clienteFoto" style="margin-left: 32%;" ng-src="{{'images/user'+Cliente.cliente.Sexo+'.png'}}" />
+    <img class="clienteFoto" style="margin-left: 32%;" ng-src="{{'images/user'+Cliente.cliente.sexo+'.png'}}" />
     <span class='clienteNome' >{{Cliente.cliente.nome}}</span>
     <div ng-show="Cliente.cliente.Anotacao.length>0" >
         <div class="tituloSessao" >Anota&ccedil;&otilde;es</div>

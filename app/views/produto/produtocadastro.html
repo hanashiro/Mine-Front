@@ -10,18 +10,33 @@
   <div class="grid-100 grid-parent" >
     <div class="grid-25" >C&oacute;d Barras</div>
     <div class="grid-50" >Nome</div>
-    <div class="grid-25" >Categoria</div>
+    <div class="grid-25" >Categoria  
+      <button class="btn btn-success" style="width: 22px;height: 25px;padding: 2px 0px;" ng-click="Categorias.Modal.open()" >
+        <i class="fa fa-plus btn-success"></i>
+      </button>
+    </div>
   </div>
 
   <div class="grid-100 grid-parent" >
     <div class="grid-25" >
-      <input type="text" style="width:100%" ng-model="Produto.produto.codigoBarras" />
+      <input type="text" class="form-control" style="width:100%" ng-model="Produto.produto.codigoBarras" />
     </div>
     <div class="grid-50" >
-      <input type="text" style="width:100%" ng-model="Produto.produto.nome" />
+      <input type="text" class="form-control" style="width:100%" ng-model="Produto.produto.nome" />
     </div>
     <div class="grid-25" >
-      <select style="width:100%" ng-model="Produto.produto.categoria" ></select>
+      
+      <ui-select ng-model="Produto.produto.categoria"
+             theme="bootstrap"
+             ng-disabled="disabled"
+             reset-search-input="false"
+             style="width: 100%;">
+        <ui-select-match placeholder="Categoria">{{$select.selected.nome}}</ui-select-match>
+        <ui-select-choices repeat="cat in Categorias.list">
+          <div ng-bind-html="cat.nome | highlight: $select.search"></div>
+        </ui-select-choices>
+      </ui-select>
+
     </div>
   </div>
 
@@ -36,16 +51,16 @@
 
   <div class="grid-100 grid-parent" >
     <div class="grid-25" >
-      <input type="text" style="width:100%" ng-model="Produto.produto.precoEntrada" />
+      <input type="text" class="form-control" style="width:100%" ng-model="Produto.produto.precoEntrada" />
     </div>
     <div class="grid-25" >
-      <input type="text" style="width:100%" ng-model="Produto.produto.precoSaida" />
+      <input type="text" class="form-control" style="width:100%" ng-model="Produto.produto.precoSaida" />
     </div>
     <div class="grid-25" >
-      <input type="text" style="width:100%" ng-model="Produto.produto.quantidade" />
+      <input type="text" class="form-control" style="width:100%" ng-model="Produto.produto.quantidade" />
     </div>
     <div class="grid-25" >
-      <input type="text" style="width:100%" ng-model="Produto.produto.estoqueMinimo" />
+      <input type="text" class="form-control" style="width:100%" ng-model="Produto.produto.estoqueMinimo" />
     </div>
   </div>
 
@@ -60,4 +75,18 @@
     </div>
   </div>
 
+</div>
+
+
+
+<div id='categoriaCadastro' ng-show="Categorias.Modal.show" >
+
+  <div ng-repeat="cat in Categorias.list" >
+    <input type="text" class="form-control" ng-model="cat.nome" ng-blur="Categorias.alterar(cat)" >
+  </div>
+  <br><br>
+  <input placeholder="Nova Categoria" type="text" class="form-control" ng-model="Categorias.novaCategoria.nome" style="display: inline;width: 414px;" >
+  <button ng-click="Categorias.cadastrar()" class="btn btn-success">
+    <i class="glyphicon glyphicon-plus"></i>
+  </button>
 </div>
