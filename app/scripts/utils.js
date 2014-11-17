@@ -84,6 +84,12 @@ var Utils = (function(){
                         {
                             Cidade[i].Value = Cidade[i].Value.replace("_", " ").replace("_", " ").replace("_", " ").replace("_", " ").replace("_", " ");
                             Cidade[i].Value = Cidade[i].Value.toLowerCase();
+                            var splitted = Cidade[i].Value.split(" ");
+                            var formattedName = "";
+                            for(var j = 0; j < splitted.length; j++){
+                                formattedName += splitted[j].charAt(0).toUpperCase() + splitted[j].slice(1) + " ";
+                            }
+                            Cidade[i].Value = formattedName.trim();
                             ArrayCidades.push(Cidade[i]);
                         }
                     }

@@ -166,7 +166,7 @@ angular.module('mineApp')
                     api.post('produto',obj,sucesso,erro);
                 },
                 alterar : function(obj,sucesso,erro){
-                    api.put('produto',obj,sucesso,erro);
+                    api.put('produto/alterar/',obj,sucesso,erro);
                 },
                 deletar : function(id,sucesso,erro){
                     api.del('produto',id,sucesso,erro);
