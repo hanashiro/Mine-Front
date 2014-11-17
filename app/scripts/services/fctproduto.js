@@ -35,7 +35,7 @@ angular.module('mineApp')
             if(!app.produto.id){
                 FctApi.Produto.salvar(app.produto,
                     function(resp){
-                        app.produto = produto;
+                        app.produto = Objetos.Produto();
                         Plugins.Mensagem.sucesso("Produto cadastrado com sucesso");
                     },
                     function(erro){

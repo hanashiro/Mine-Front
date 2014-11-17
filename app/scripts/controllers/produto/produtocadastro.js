@@ -67,6 +67,7 @@ angular.module('mineApp')
                     if(novaCategoria.id){
                         $scope.Categorias.list.push(novaCategoria);
                         $scope.Categorias.novaCategoria = {nome : "", ativo: true};
+                        FctProduto.produto.categoria = novaCategoria;
                     }else{
                         Plugins.Mensagem.erro("Erro ao cadastrar categoria");
                     }
