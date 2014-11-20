@@ -47,7 +47,7 @@ angular.module('mineApp')
                     width: 500,
                     height: 500,
                     resizable: false,
-                    draggable: false,
+                    draggable: true,
                     modal: true,
                     show: { effect: "drop", duration: 800 },
                     hide: { effect: "drop", duration: 1000 },

@@ -15,19 +15,19 @@
            <table id="cliCadastro1" class="cadastro">
                <tr>
                    <td>Nome Fantasia*</td>
-                   <td><input type='text' size="60" ng-model="Fornecedor.fornecedor.nomeFantasia" /></td>
+                   <td><input type='text' class="form-control" size="60" ng-model="Fornecedor.fornecedor.nomeFantasia" /></td>
                </tr>
                <tr>
                    <td>Raz&atilde;o Social</td>
-                   <td><input type='text' size="60" ng-model="Fornecedor.fornecedor.razao" /></td>
+                   <td><input type='text' class="form-control" size="60" ng-model="Fornecedor.fornecedor.razao" /></td>
                </tr>
                <tr>
                    <td>Inscri&ccedil;&atilde;o Municipal</td>
-                   <td><input type='text' size="60" ng-model="Fornecedor.fornecedor.inscricaoMunicipal" /></td>
+                   <td><input type='text' class="form-control" size="60" ng-model="Fornecedor.fornecedor.inscricaoMunicipal" /></td>
                </tr>
                <tr>
                    <td>Inscri&ccedil;&atilde;o Estadual</td>
-                   <td><input type='text' size="60" ng-model="Fornecedor.fornecedor.inscricaoEstadual" /></td>
+                   <td><input type='text' class="form-control" size="60" ng-model="Fornecedor.fornecedor.inscricaoEstadual" /></td>
                </tr>
                <tr ng-show="Fornecedor.fornecedor.id">
                    <td colspan="2"><input type='checkbox' ng-model="Fornecedor.fornecedor.ativo" />Ativo</td>
@@ -52,7 +52,16 @@
                <tr>
                <tr style="height:20px;"><td colspan='5'></td></tr>
                <td>Tipo</td>
-               <td><select ng-model='telefone.tipo' ng-options='t.Value for t in tipoTelefone' ng-init='telefone.tipo=tipoTelefone[0]'></select></td>
+               <td>
+
+                  <ui-select id="selectTelefone" ng-model="telefone.tipo" theme="bootstrap" ng-disabled="disabled" reset-search-input="false" style="width: 100%;">
+                    <ui-select-match placeholder="Tipo Telefone">{{$select.selected.Value}}</ui-select-match>
+                    <ui-select-choices repeat="tipo in tipoTelefone | filter: $select.search">
+                      <div id="selectTelefoneOptions" ng-bind-html="tipo.Value | highlight: $select.search"></div>
+                    </ui-select-choices>
+                  </ui-select>
+
+               </td>
                <td>N&uacute;mero</td>
                <td><input size="33" type='tel' ng-model='telefone.contato' maxlength="15" onkeydown="Utils.Mascaras.numerosTeclado();" onkeyup='this.value=Utils.Mascaras.addTel(this.value);' /></td>
                <td>
@@ -75,7 +84,16 @@
                <tr>
                <tr style="height:20px;"><td colspan='5'></td></tr>
                <td>Tipo</td>
-               <td><select ng-model='email.tipo' ng-options='t.Value for t in tipoEmail' ng-init='email.tipo=tipoEmail[0]'></select></td>
+               <td>
+
+                  <ui-select id="selectEmail" ng-model="email.tipo" theme="bootstrap" ng-disabled="disabled" reset-search-input="false" style="width: 100%;">
+                    <ui-select-match placeholder="Tipo Email">{{$select.selected.Value}}</ui-select-match>
+                    <ui-select-choices repeat="tipo in tipoEmail | filter: $select.search">
+                      <div id="selectEmailOptions" ng-bind-html="tipo.Value | highlight: $select.search"></div>
+                    </ui-select-choices>
+                  </ui-select>
+
+               </td>
                <td>Endere&ccedil;o</td>
                <td><input size="33" type='email' ng-model="email.contato" /></td>
                <td>
@@ -93,34 +111,62 @@
            <table id="cliCadastro3" class="cadastro">
                <tr>
                    <td>Logradouro*</td>
-                   <td><select ng-model='Fornecedor.fornecedor.endereco.tipoLogradouro' ng-options='l.Value for l in tipoLogradouro'></select></td>
-                   <td colspan='2'><input type='text' style="width:100%;" ng-model="Fornecedor.fornecedor.endereco.logradouro" tooltip="{{Fornecedor.fornecedor.endereco.tipoLogradouro.Value}}" tooltip-trigger="focus" tooltip-placement="right" /></td>
+                   <td>
+
+                      <ui-select id="selectLogradouro" ng-model="Fornecedor.fornecedor.endereco.tipoLogradouro" theme="bootstrap" ng-disabled="disabled" reset-search-input="false" style="width: 100%;">
+                      <ui-select-match placeholder="Tipo Logradouro">{{$select.selected.Value}}</ui-select-match>
+                      <ui-select-choices repeat="tipo in tipoLogradouro | filter: $select.search">
+                        <div id="selectLogradouroOptions" ng-bind-html="tipo.Value | highlight: $select.search"></div>
+                      </ui-select-choices>
+                    </ui-select>
+
+                   </td>
+                   <td colspan='2'><input type='text' class="form-control" style="width:100%;" ng-model="Fornecedor.fornecedor.endereco.logradouro" tooltip="{{Fornecedor.fornecedor.endereco.tipoLogradouro.Value}}" tooltip-trigger="focus" tooltip-placement="right" /></td>
                </tr>
                <tr>
                    <td>N&uacute;mero*</td>
-                   <td><input type='text' ng-model="Fornecedor.fornecedor.endereco.numero" /> </td>
+                   <td><input type='text' class="form-control" ng-model="Fornecedor.fornecedor.endereco.numero" /> </td>
                    <td>Complemento</td>
-                   <td><input type='text' style="width:100%;" ng-model="Fornecedor.fornecedor.endereco.complemento" /></td>
+                   <td><input type='text' class="form-control" style="width:100%;" ng-model="Fornecedor.fornecedor.endereco.complemento" /></td>
                </tr>
                <tr>
                    <td>Zona</td>
                    <td><input type='radio' ng-model='Fornecedor.fornecedor.endereco.zona' value='urbana' />Urbana <input type='radio' ng-model='Fornecedor.fornecedor.endereco.zona' value='rural' />Rural</td>
                    <td>CEP</td>
-                   <td><input type='text' ng-model="Fornecedor.fornecedor.endereco.cep" /></td>
+                   <td><input type='text' class="form-control" ng-model="Fornecedor.fornecedor.endereco.cep" /></td>
                </tr>
                <tr>
                    <td>Bairro*</td>
-                   <td colspan='3'><input type='text' ng-model='Fornecedor.fornecedor.endereco.bairro' /></td>
+                   <td colspan='3'><input type='text' class="form-control" ng-model='Fornecedor.fornecedor.endereco.bairro' /></td>
                </tr>
                <tr>
                    <td>Estado*</td>
-                   <td><select ng-model="Fornecedor.fornecedor.endereco.estado" ng-change="retornarCidades();" ng-options="e.Value for e in estados"></select></td>
+                   <td>
+
+                      <ui-select id="selectEstado" ng-model="Fornecedor.fornecedor.endereco.estado" theme="bootstrap" ng-disabled="disabled" reset-search-input="false" style="width: 100%;">
+                      <ui-select-match placeholder="Estado">{{$select.selected.Value}}</ui-select-match>
+                      <ui-select-choices repeat="estado in estados | filter: $select.search">
+                        <div id="selectEstadoOptions" ng-bind-html="estado.Value | highlight: $select.search"></div>
+                      </ui-select-choices>
+                    </ui-select>
+
+                   </td>
                    <td>Cidade*</td>
-                   <td><select ng-model="Fornecedor.fornecedor.endereco.cidade" ng-options="c.Value for c in cidades"></select></td>
+                   <td>
+
+                      <ui-select id="selectCidade" ng-model="Fornecedor.fornecedor.endereco.cidade" theme="bootstrap" ng-disabled="disabled" reset-search-input="false" style="width: 100%;">
+                      <ui-select-match placeholder="Cidade">{{$select.selected.Value}}</ui-select-match>
+                      <ui-select-choices repeat="cidade in cidades | filter: $select.search">
+                        <div id="selectCidadeOptions" ng-bind-html="cidade.Value | highlight: $select.search"></div>
+                      </ui-select-choices>
+                    </ui-select>
+
+
+                   </td>
                </tr>
                <tr style="display:none;" >
                    <td>Coordenadas</td>
-                   <td><input type='text' ng-model="Fornecedor.fornecedor.endereco.coordenadas" readonly="readonly" /></td>
+                   <td><input type='text' class="form-control" ng-model="Fornecedor.fornecedor.endereco.coordenadas" readonly="readonly" /></td>
                    <td colspan="2"><input type='button' id='fornecedorGerarCoordenadas' ng-click="gerarCoordenadas()" value="Gerar Coordenadas" ng-show="Fornecedor.fornecedor.id" /></td>
                </tr>
                <tr>
