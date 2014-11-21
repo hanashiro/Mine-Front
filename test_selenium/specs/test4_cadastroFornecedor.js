@@ -2,9 +2,8 @@ describe('Supplier', function() {
   it('should make a register', function() {
     browser.get('#fornecedor/fornecedorCadastro/novo_cliente');
 
-    /*element(by.model('Fornecedor.fornecedor.nome')).sendKeys("akira");
+    element(by.model('Fornecedor.fornecedor.nomeFantasia')).sendKeys("Passa Quatro");
     
-    element(by.model('Fornecedor.fornecedor.aniversario')).sendKeys("07071993");*/
 
     element.all(by.css('.nav.nav-pills.nav-justified li')).get(1).click();
 
