@@ -1,5 +1,5 @@
 <div class="DemoGrid topo">
-    <button class="btn btn-success" style="width:150px;" ng-click="salvar()" >
+    <button class="btn btn-success" id="btnSalvar" style="width:150px;" ng-click="salvar()" >
         <i class="glyphicon glyphicon-ok" ></i> Salvar
     </button>
 </div>
@@ -37,7 +37,7 @@
            <table id="cliCadastro2" class="cadastro">
                <th colspan='5'>Telefone</th>
                <tr ng-repeat='tel in Cliente.cliente.contato' ng-show='tel.categoria=="Telefone"'>
-                   <td colspan='2'>{{tel.tipo.hasOwnProperty('Value') ? tel.tipo.Value : tel.Tipo}}</td>
+                   <td colspan='2'>{{tel.tipo.hasOwnProperty('Value') ? tel.tipo.Value : tel.tipo}}</td>
                    <td colspan='2'>{{tel.contato}}</td>
                    <td>
                        <button ng-click="apagarContato($index)" class="btn btn-danger btn-xs">
@@ -61,7 +61,7 @@
                <td>N&uacute;mero:</td>
                <td><input size="33" type='tel' ng-model='telefone.contato' maxlength="15" onkeydown="Utils.Mascaras.numerosTeclado();" onkeyup='this.value=Utils.Mascaras.addTel(this.value);' class="form-control" /></td>
                <td>
-                   <button ng-click="novoContato('Telefone')" class="btn btn-success btn-xs">
+                   <button ng-click="novoContato('Telefone')" id="buttonNovoTelefone" class="btn btn-success btn-xs">
                        <i class="glyphicon glyphicon-plus"></i>
                    </button>
                </td>
@@ -93,7 +93,7 @@
                <td>Endere&ccedil;o:</td>
                <td><input size="33" type='email' ng-model="email.contato" class="form-control" /></td>
                <td>
-                   <button ng-click="novoContato('Email')" class="btn btn-success btn-xs">
+                   <button ng-click="novoContato('Email')" id="buttonNovoEmail" class="btn btn-success btn-xs">
                        <i class="glyphicon glyphicon-plus"></i>
                    </button>
                </td>

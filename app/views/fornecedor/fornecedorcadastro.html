@@ -65,7 +65,7 @@
                <td>N&uacute;mero</td>
                <td><input size="33" type='tel' ng-model='telefone.contato' maxlength="15" onkeydown="Utils.Mascaras.numerosTeclado();" onkeyup='this.value=Utils.Mascaras.addTel(this.value);' /></td>
                <td>
-                   <button ng-click="novoContato('Telefone')" class="btn btn-success btn-xs">
+                   <button ng-click="novoContato('Telefone')" id="buttonNovoTelefone" class="btn btn-success btn-xs">
                        <i class="glyphicon glyphicon-plus"></i>
                    </button>
                </td>
@@ -97,7 +97,7 @@
                <td>Endere&ccedil;o</td>
                <td><input size="33" type='email' ng-model="email.contato" /></td>
                <td>
-                   <button ng-click="novoContato('Email')" class="btn btn-success btn-xs">
+                   <button ng-click="novoContato('Email')" id="buttonNovoEmail" class="btn btn-success btn-xs">
                        <i class="glyphicon glyphicon-plus"></i>
                    </button>
                </td>
